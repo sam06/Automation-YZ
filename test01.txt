@@ -1,1 +1,2 @@
 hello ,this is text file in config file
+editing this file from gui end .track the change
