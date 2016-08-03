@@ -1,0 +1,572 @@
+Dc12 icontent
+#lusrmgr
+Account name: DC12_SVC_IcontentIIS
+Password : Ic@ntent123
+
+
+LoadModule reqtimeout_module /usr/lib64/apache2-event/mod_reqtimeout.so
+LoadModule proxy_module /usr/lib64/apache2-event/mod_proxy.so
+LoadModule proxy_http_module /usr/lib64/apache2-event/mod_proxy_http.so
+LoadModule proxy_balancer_module /usr/lib64/apache2-event/mod_proxy_balancer.so
+LoadModule proxy_connect_module /usr/lib64/apache2-event/mod_proxy_connect.so
+LoadModule cache_module /usr/lib64/apache2-event/mod_cache.so
+LoadModule disk_cache_module /usr/lib64/apache2-event/mod_disk_cache.so
+LoadModule rewrite_module /usr/lib64/apache2-event/mod_rewrite.so
+
+pc16lwicont01	10.16.20.132 - Web_iContent-Proxy
+pc16lwicont02 	10.16.20.133 - Web_iContent-Proxy
+
+pc16licont01 	10.16.20.130 - Web iContent-IIS
+pc16licont02 	10.16.20.131 - Web iContent-IIS
+
+DC16_SVC_IcontentIIS
+
+.\administrator
+GiveMeSuperPower!
+
+\\10.16.20.64\q
+
+origin-mgd-icontent.lms.sapsf.eu  46.29.102.152
+
+pc12lwicont02.rot.od.sap.biz 10.118.76.31
+pc12lwicont01.rot.od.sap.biz 10.118.76.30
+
+pc12licont01.rot.od.sap.biz 10.118.76.32
+pc12licont02.rot.od.sap.biz 10.118.76.33
+
+Please confirm if that's right network pool for each ip as below.
+1)origin-rot-icontent.plateau.com 155.56.221.169 - > PROD-ROT-DC12-LBC1-VIP03
+2)pc12lwicont.rot.od.sap.biz 10.118.248.220 - > PROD-ROT-DC12-LBC1-INSIDE
+3)pc12licont.rot.od.sap.biz 10.118.248.221 - > PROD-ROT-DC12-LBC1-INSIDE
+And please check that ip address 155.56.221.169 has an domain name registered already from GMP search.
+155.56.221.169	-> origin-rot-icontent-plateau.successfactors.com
+
+\\10.118.135.112\vol\vol1_LMS_icontent (sftp volume mapping)
+
+\\10.118.167.229\vol\vol1_LMS_icontent (is server volume mount detail)
+
+DC15_SVC_IcontentIIS/gummyOr@nge92 
+
+DC4 icontent
+=============
+SCO-5519 - for iContent setup
+DC4_SVC_IcontentIIS/emp+yBumper24
+
+server setup is done Successful.
+
+ pc4lwicont01	10.4.21.114
+ pc4lwicont02	10.4.21.115
+ pc4licont01 10.4.21.116
+ pc4licont02 10.4.21.117
+ 
+\\10.4.2.21\vol1_LMS_icontent_prd_01 
+\\10.4.2.22\vol1_LMS_icontent_prd_02 
+ 
+IIS servers have been configured for DC4 Prod.
+
+pc4licont01 10.4.21.116
+pc4licont02 10.4.21.117
+
+VIP set up has been done.
+V_pc4lwicont-origin.phx.sf.priV-443 - 64.95.110.61
+V_pc4lwicont-proxy.phx.sf.priv-80 - 10.4.10.237
+V_pc4lwicont.phx.sf.priv-80 - 10.4.10.238
+
+net use f: \\10.4.2.21\vol1_LMS_icontent_prd_01
+
+net use g: \\10.4.2.22\vol1_LMS_icontent_prd_02
+vol1_LMS_icontent_prd_01 (\\10.4.2.21)
+
+
+
+content_server_proxy.conf
+
+LoadModule proxy_connect_module /usr/lib64/apache2-event/mod_proxy_connect.so
+LoadModule cache_module         /usr/lib64/apache2-event/mod_cache.so
+LoadModule disk_cache_module    /usr/lib64/apache2-event/mod_disk_cache.so
+LoadModule rewrite_module       /usr/lib64/apache2-event/mod_rewrite.so
+
+10.118.76.12
+10.118.76.13
+10.118.76.14
+10.118.76.15
+10.118.76.16
+10.118.76.17
+
+APACHE_MODULES="actions alias auth_basic authn_file authz_host authz_groupfile authz_default authz_user autoindex cgi dir env expires include log_config mime negotiation setenvif ssl userdir php5 reqtimeout rewrite  proxy  proxy_balancer proxy_http proxy_connect proxy_ftp cache disk_cache"
+
+============Modules=========
+#
+# Files in this directory are created at apache start time by /usr/sbin/rcapache2
+# Do not edit them!
+#
+
+# as listed in APACHE_MODULES (/etc/sysconfig/apache2)
+
+LoadModule actions_module                 /usr/lib64/apache2-worker/mod_actions.so
+LoadModule alias_module                   /usr/lib64/apache2-worker/mod_alias.so
+LoadModule auth_basic_module              /usr/lib64/apache2-worker/mod_auth_basic.so
+LoadModule authn_file_module              /usr/lib64/apache2-worker/mod_authn_file.so
+LoadModule authz_host_module              /usr/lib64/apache2-worker/mod_authz_host.so
+LoadModule authz_groupfile_module         /usr/lib64/apache2-worker/mod_authz_groupfile.so
+LoadModule authz_default_module           /usr/lib64/apache2-worker/mod_authz_default.so
+LoadModule authz_user_module              /usr/lib64/apache2-worker/mod_authz_user.so
+LoadModule autoindex_module               /usr/lib64/apache2-worker/mod_autoindex.so
+LoadModule cgid_module                    /usr/lib64/apache2-worker/mod_cgid.so
+LoadModule dir_module                     /usr/lib64/apache2-worker/mod_dir.so
+LoadModule env_module                     /usr/lib64/apache2-worker/mod_env.so
+LoadModule expires_module                 /usr/lib64/apache2-worker/mod_expires.so
+LoadModule include_module                 /usr/lib64/apache2-worker/mod_include.so
+LoadModule log_config_module              /usr/lib64/apache2-worker/mod_log_config.so
+LoadModule mime_module                    /usr/lib64/apache2-worker/mod_mime.so
+LoadModule negotiation_module             /usr/lib64/apache2-worker/mod_negotiation.so
+LoadModule setenvif_module                /usr/lib64/apache2-worker/mod_setenvif.so
+LoadModule ssl_module                     /usr/lib64/apache2-worker/mod_ssl.so
+LoadModule userdir_module                 /usr/lib64/apache2-worker/mod_userdir.so
+LoadModule reqtimeout_module              /usr/lib64/apache2-worker/mod_reqtimeout.so
+LoadModule rewrite_module                 /usr/lib64/apache2-worker/mod_rewrite.so
+LoadModule proxy_module                   /usr/lib64/apache2-worker/mod_proxy.so
+LoadModule proxy_balancer_module          /usr/lib64/apache2-worker/mod_proxy_balancer.so
+LoadModule proxy_http_module              /usr/lib64/apache2-worker/mod_proxy_http.so
+LoadModule proxy_connect_module           /usr/lib64/apache2-worker/mod_proxy_connect.so
+LoadModule proxy_ftp_module               /usr/lib64/apache2-worker/mod_proxy_ftp.so
+LoadModule cache_module                   /usr/lib64/apache2-worker/mod_cache.so
+LoadModule disk_cache_module              /usr/lib64/apache2-worker/mod_disk_cache.so
+#
+===========*==============
+
+.\administrator
+GiveMeSuperPower! 
+
+
+Access:
+Add sfdc\DC15_App_iContent_Prod_Admin to “Administrators” group
+Add sfdc\DC15_App_iContent_Prod_LoginOnly to “Remote Desktop Users”
+Remove “sfdc\Domain Users” from to “Remote Desktop Users”
+
+Access:
+Add sfdc\DC4_App_iContent_Prod_Admin to “Administrators” group
+Add sfdc\DC15_App_iContent_Prod_LoginOnly to “Remote Desktop Users”
+Remove “sfdc\Domain Users” from to “Remote Desktop Users”
+
+http://confluence.successfactors.com/display/IMPM/iContent+Migration+Test+Cases
+
+http://10.4.30.174:8080/iclp/about_me.jsp
+
+http://10.4.30.174:8080/proxlet/CrossDomainProxlet
+
+On ofbiz server following cmd need to run.
+
+1)groupadd oinstall
+2)useradd oracle
+3)zypper install oracle-psl-11.2.0
+
+[‎11/‎19/‎2015 4:05 PM] Kushwaha, Subodh (external - Project): 
+hiii
+/SFTP_Home/iContent Team/G/icontent-custom/<Customer_ID>/self-managed/
+
+\\10.20.254.246\teamcontent2_h_q\icontent_unentitled
+
+\\10.20.254.246\teamcontent2_h_q\icontent
+
+1)ofbiz volume detail for cisco server
+
+10.8.2.31:/vol1_ic_ofbiz_01                 475G  116G  360G  25% /nfs/ofbiz_upload
+
+2)entitlement server volume detail for cisco server
+10.8.2.31:/vol1_icontent_prd_01/p_icontent01_q/dc8_cisco   10G  1.1G  9.0G  11% /nfs/icontent
+
+3)Iclp server volume detail for cisco server 
+
+10.8.2.31:/vol1_icontent_prd_01/p_icontent01_q/dc8_cisco   10G  1.1G  9.0G  11% /nfs/icontent
+
+10.8.2.31:/vol1_LMS_ofbiz_prd_upload_01                   300G  3.5M  300G   1% /ofbiz_upload
+
+Use this path to mount on unix:-
+10.4.2.34:/vol1_icontent_prd_01 & 10.4.2.34:/vol1_icontent_prd_01
+use the following path to access as UNC path on windows hosts.
+\\10.4.2.34\vol1_icontent_prd_01 
+\\10.4.2.34\vol1_icontent_prd_02
+
+1)DC4 DR entitlemet server detail:
+pd4entitle01	10.4.30.171
+pd4entitle02	10.4.30.172
+pd4entitle03	10.4.30.173
+
+2)DC4 DR ofbiz server detail:
+
+pd4ofbiz01	10.4.30.177
+pd4ofbiz01	10.4.30.178
+
+3)DC4 DR iclp server detail:
+
+pd4iclp07	10.4.30.174
+pd4iclP06	10.4.30.175
+
+ofbiz schema detail 
+
+1)ofbiz_old072013/of3iz_old072013_pwd@DC8PLM01
+2)ofbiz_converted_prod/of3iz_333_prod@DC8PLM01
+3)ofbiz_converted_olap_prod/of3iz_333_0lap_prod@DC8PLM01
+
+ofbiz_old072013/of3iz_old072013_pwd@DC4PLM01
+ofbiz_converted_prod/of3iz_333_prod@DC4PLM01
+ofbiz_converted_olap_prod/of3iz_333_0lap_prod@DC4PLM01
+
+DC4PLM01
+
+ofbiz_converted_33/of3iz_old072013_pwd@DC8PLM01
+
+plateau@pd4ofbiz01:~/ofbiz/etc> more ofbiz.properties
+ofbiz.admin.port=10523
+ofbiz.admin.key=RcrZw6XnWZGtgTMSL7E8nGR4RxZKCOuk
+plateau@pd4ofbiz01:~/ofbiz/etc> more ofbiz.default
+MEMIF="-Xms256M -Xmx512M"
+
+ofbiz server
+-----------
+2015-12-14 07:01:22,548 (http-0.0.0.0-8080-1) [StandardWrapperValve.java:281:ERROR] Servlet.service() for servlet WebslingerServlet threw exception
+java.lang.NullPointerException
+        at org.webslinger.AbstractMappingWebslingerServletContextFactory$ContextKey.<init>(AbstractMappingWebslingerServletContextFactory.java:280)
+        at org.webslinger.AbstractMappingWebslingerServletContextFactory$LayoutKey.freeze(AbstractMappingWebslingerServletContextFactory.java:257)
+        at org.webslinger.AbstractMappingWebslingerServletContextFactory$LayoutKey.freeze(AbstractMappingWebslingerServletContextFactory.java:249)
+        at org.webslinger.cache.ConcurrentFreezableCache.get(ConcurrentFreezableCache.java:25)
+        at org.webslinger.AbstractMappingWebslingerServletContextFactory.getContext(AbstractMappingWebslingerServletContextFactory.java:161)
+        at org.webslinger.AbstractMappingWebslingerServletContextFactory$ContextTTLObject.load(AbstractMappingWebslingerServletContextFactory.java:238)
+        at org.webslinger.AbstractMappingWebslingerServletContextFactory$ContextTTLObject.load(AbstractMappingWebslingerServletContextFactory.java:223)
+        at org.webslinger.concurrent.TTLObject.load(TTLObject.java:294)
+        at org.webslinger.concurrent.TTLObject$ValueAndState$1.call(TTLObject.java:116)
+        at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+        at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+        at org.webslinger.concurrent.TTLObject.getObject(TTLObject.java:267)
+        at org.webslinger.AbstractMappingWebslingerServletContextFactory.getWebslingerServletContext(AbstractMappingWebslingerServletContextFactory.java:138)
+        at org.webslinger.servlet.WebslingerServlet.service(WebslingerServlet.java:41)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+        at org.apache.catalina.valves.AccessLogValve.invoke(AccessLogValve.java:555)
+        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+        at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:857)
+        at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+        at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+        at java.lang.Thread.run(Thread.java:619)
+2015-12-14 07:01:23,532 (http-0.0.0.0-8080-2) [StandardWrapperValve.java:281:ERROR] Servlet.service() for servlet WebslingerServlet threw exception
+java.lang.NullPointerException
+-------
+
+COSR-56275 - Need to export/import the dump from DC8 To DC4
+==============
+<html>
+<head>
+<title>welcome DC13</title>
+</head>
+<body>
+<HR/>
+WELCOME to iContent.
+
+<HR/>
+
+</body>
+</html>
+
+ 
+===============
+
+Dc13 QC icontent installation
+
+Site name --> origin-dc13-icontent.lab-rot.ondemand.com
+
+ 
+DC13_SVC_IcontentIIS
+
+HnN473Taw
+
+c546hEaMN 
+
+10.116.39.229 nm64T2PvV
+10.116.39.214 9wha3CY6S 
+
+c5207215
+
+internal vip name      icontent.lab-rot.saas.sap.corp
+external icontent vip  origin-dc13-icontent.lab-rot.ondemand.com
+
+origin-dc13-icontent.lab-rot.saas.sap.corp
+
+entitlement vip detail for dc13-icontent
+1)external dc13-entitlement.lab-rot.ondemand.com
+2)internal dc13entitle.lab-rot.saas.sap.corp
+
+ENT_DB_USER=ices
+ENT_DB_PWD=columbia
+
+(HOST=dc8orapc1n5.ash.sf.priv)
+SERVICE_NAME=DC8PLM01
+
+plateau:x:1100:1100::/local/customers/plateau:/bin/bash
+
+plateau:x:2004:100::/home/plateau:/bin/bash
+
+mo-004a22a36.lab-rot.saas.sap.corp
+"tags":["hostname=qm13entitle01"]
+
+wget http://yum.lab-rot.saas.sap.corp/hcm/lms/yum/SLES/11.3/app/qc/java/plateau-foundation-jdk-1.6-psl-1.6.0_18-1.x86_64.rpm
+
+Log file NOT FOUND : icontent.2016-02-25.log
+ Log file NOT FOUND : icontent.log
+ Log file NOT FOUND : catalina.out
+ 
+Using CATALINA_BASE:   /local/customers/plateau/work_PRODCOLO/ENT/plf1
+Using CATALINA_HOME:   /nfs/icontent/services/dist/plateau-foundation
+Using CATALINA_TMPDIR: /local/customers/plateau/work_PRODCOLO/ENT/plf1/temp
+Using JRE_HOME:        /local/opt/jdk1.6.0_18
+Using CLASSPATH:       /nfs/icontent/services/dist/plateau-foundation/bin/bootstrap.jar
+
+
+
+LoadModule rewrite_module                 /usr/lib64/apache2-worker/mod_rewrite.so
+LoadModule proxy_module                   /usr/lib64/apache2-worker/mod_proxy.so
+LoadModule proxy_balancer_module          /usr/lib64/apache2-worker/mod_proxy_balancer.so
+LoadModule proxy_http_module              /usr/lib64/apache2-worker/mod_proxy_http.so
+LoadModule proxy_connect_module           /usr/lib64/apache2-worker/mod_proxy_connect.so
+LoadModule proxy_ftp_module               /usr/lib64/apache2-worker/mod_proxy_ftp.so
+LoadModule cache_module                   /usr/lib64/apache2-worker/mod_cache.so
+LoadModule disk_cache_module              /usr/lib64/apache2-worker/mod_disk_cache.so 
+
+
+
+       
+         
+
+    
+ 
+     
+a2enmod cache_module         
+a2enmod disk_cache_module    
+
+APACHE_MODULES="actions alias auth_basic authn_file authz_host authz_groupfile authz_default authz_user authn_dbm autoindex cgi dir env expires include log_config mime negotiation setenvif ssl suexec userdir php5 reqtimeout   rewrite_module proxy_module proxy_balancer_module proxy_http_module proxy_connect_module proxy_ftp_module cache_module disk_cache_module"
+
+
+APACHE_MODULES="actions alias auth_basic authn_file authz_host authz_groupfile authz_default authz_user authn_dbm autoindex cgi dir env expires include log_config mime negotiation setenvif ssl suexec userdir php5 reqtimeout"
+
+
+
+a2dismod
+actions alias asis auth_basic auth_digest authn_alias authn_anon
+#    authn_dbd authn_dbm authn_default authn_file authnz_ldap authz_dbm
+#    authz_default authz_groupfile authz_host authz_owner authz_user
+#    autoindex bucketeer cache case_filter case_filter_in cern_meta cgi
+#    charset_lite dav dav_fs dav_lock dbd deflate dir disk_cache dumpio
+#    echo env expires ext_filter file_cache filter headers ident imagemap
+#    include info ldap log_config log_forensic logio mem_cache mime mime_magic
+#    negotiation optional_fn_export optional_fn_import optional_hook_export
+#    optional_hook_import proxy proxy_ajp proxy_balancer proxy_connect
+#    proxy_ftp proxy_http proxy_wstunnel reqtimeout rewrite setenvif speling
+#    ssl status substitute suexec unique_id userdir usertrack version
+#    vhost_alias
+
+
+a2dismod  rewrite_module       
+a2dismod proxy_module         
+a2dismod proxy_balancer_module
+a2dismod proxy_http_module    
+a2dismod proxy_connect_module 
+a2dismod proxy_ftp_module     
+a2dismod cache_module         
+a2dismod disk_cache_module
+
+apache2-utils-2.2.12-1.48.1
+apache2-doc-2.2.12-1.48.1
+apache2-2.2.12-1.48.1
+apache2-prefork-2.2.12-1.48.1
+apache2-worker-2.2.12-1.48.1 
+
+=========
+#
+#as listed in APACHE_MODULES (/etc/sysconfig/apache2)
+LoadModule actions_module         /usr/lib64/apache2-worker/mod_actions.so
+LoadModule alias_module           /usr/lib64/apache2-worker/mod_alias.so
+LoadModule auth_basic_module /usr/lib64/apache2-worker/mod_auth_basic.so
+LoadModule authn_file_module /usr/lib64/apache2-worker/mod_authn_file.so
+LoadModule authz_host_module /usr/lib64/apache2-worker/mod_authz_host.so
+LoadModule authz_groupfile_module /usr/lib64/apache2-worker/mod_authz_groupfile.so
+LoadModule authz_default_module /usr/lib64/apache2-worker/mod_authz_default.so
+LoadModule authz_user_module /usr/lib64/apache2-worker/mod_authz_user.so
+LoadModule authn_dbm_module /usr/lib64/apache2-worker/mod_authn_dbm.so
+LoadModule autoindex_module /usr/lib64/apache2-worker/mod_autoindex.so
+LoadModule cgid_module /usr/lib64/apache2-worker/mod_cgid.so
+LoadModule dir_module /usr/lib64/apache2-worker/mod_dir.so
+LoadModule env_module /usr/lib64/apache2-worker/mod_env.so
+LoadModule expires_module /usr/lib64/apache2-worker/mod_expires.so
+LoadModule include_module /usr/lib64/apache2-worker/mod_include.so
+LoadModule log_config_module /usr/lib64/apache2-worker/mod_log_config.so
+LoadModule mime_module /usr/lib64/apache2-worker/mod_mime.so
+LoadModule negotiation_module /usr/lib64/apache2-worker/mod_negotiation.so
+LoadModule setenvif_module /usr/lib64/apache2-worker/mod_setenvif.so
+LoadModule ssl_module /usr/lib64/apache2-worker/mod_ssl.so
+LoadModule suexec_module /usr/lib64/apache2-worker/mod_suexec.so
+LoadModule userdir_module /usr/lib64/apache2-worker/mod_userdir.so
+LoadModule reqtimeout_module /usr/lib64/apache2-worker/mod_reqtimeout.so
+LoadModule proxy_module /usr/lib64/apache2-worker/mod_proxy.so
+LoadModule proxy_http_module /usr/lib64/apache2-worker/mod_proxy_http.so
+LoadModule proxy_balancer_module /usr/lib64/apache2-worker/mod_proxy_balancer.so
+LoadModule proxy_connect_module /usr/lib64/apache2-worker/mod_proxy_connect.so
+LoadModule cache_module /usr/lib64/apache2-worker/mod_cache.so
+LoadModule disk_cache_module /usr/lib64/apache2-worker/mod_disk_cache.so
+LoadModule rewrite_module /usr/lib64/apache2-worker/mod_rewrite.so
+LoadModule proxy_ftp_module /usr/lib64/apache2-worker/mod_proxy_ftp.so
+
+Content Server detail DC18:-
+1)pc18content01 mo-017625569.dc18.saas.sap.corp 10.240.21.110(windows)
+2_pc18content02 mo-f833bbd46.dc18.saas.sap.corp 10.240.22.193 (windows)
+
+Proxy Server detail :-
+1)pc18icontent-pxy01 mo-0a6467671.dc18.saas.sap.corp 10.240.23.169(Suse Linux)
+2)pc18icontent-pxy02 mo-b4e23f493.dc18.saas.sap.corp 10.240.20.188 (Suse Linux)
+
+
+<html>
+<head>
+<title>welcome mo-75711e5df</title>
+</head>
+<body>
+<HR/>
+WELCOME to iContent.
+
+<HR/>
+
+</body>
+</html>
+
+iss dc13 10.116.39.58  10.116.36.34 
+account name - DC13_SVC_IcontentIIS Ic@ntent
+
+mount \\10.116.41.82\vol_lms_icontent01 Y:
+
+mount  -o mtype=soft \\10.116.41.82\vol_lms_icontent01 Y:
+
+mount  -o mtype=soft \\10.116.41.82\vol_lms_icontent02 Z:
+
+
+\\10.116.41.82\vol_lms_icontent01\icontent
+
+
+
+https://confluence.successfactors.com/display/DCOPS/Platform+Services+-+SFTP+-+EFT+Servers
+
+Dc13 QC sftp server & credentila
+===========================
+c5207215
+
+dc13qasftp01 (mo-748210268) 6LS2Kbwq9 10.116.33.226
+
+https://dc13sftp.lab-rot.saas.sap.corp/EFTClient/Account/Login.htm
+
+http://10.116.33.152/EFTClient/Account/Login.htm
+
+
+sfengg ZmyD33JP
+
+
+ICES/columbia
+DC13LMQ1
+
+
+http://jira.successfactors.com/browse/COSR-67423 import for entitlement
+
+
+lpV6Nm4k
+sh –x baseos.sh
+
+
+
+===========sprint 31==============
+Name:   pc4licont01.phx.sf.priv
+Address: 10.4.21.116
+
+Name:   pc4licont02.phx.sf.priv
+Address: 10.4.21.117
+
+c5173961@pc4lwicont01:~>
+
+Volume mounted
+vol1_LMS_icontent_prd_01 (\\10.4.2.21) - for icontent
+vol1_LMS_icontent_prd_02 (\\10.4.2.22) - for icontent_e
+
+origin-phx-icontent.plateau.com
+
+Display ITdirect SR Ticket: 7002108080, Need to add the members in VIP in DC4
+
+10.4.10.238
+
+proxy internal VIP - 10.4.10.237
+external ip - 64.95.110.61
+
+
+# generated from APACHE_MODULES in /etc/sysconfig/apache2
+Include /etc/apache2/sysconfig.d/loadmodule.conf
+
+
+for pd4 - origin-pd4-icontent.plateau.com
+
+
+10.4.21.234
+10.4.21.235
+
+=========
+10.4.21.234 - new apache icontent server dc4
+10.4.21.235  new  apache icontent server  dc4
+
+---------
+mo-26924037d:/etc/apache2/conf.d # ls -ltrh
+total 8.0K
+-rw-r--r-- 1 root root 305 Oct 10  2014 inst_server.conf.in
+-rw-r--r-- 1 root root 277 Apr 15 19:26 icontent.conf
+mo-26924037d:/etc/apache2/conf.d # more inst_server.conf.in
+# httpd configuration for Installation Server included by httpd.conf
+<IfDefine inst_server>
+    Alias @ALIAS@ @SERVERDIR@
+    <Directory @SERVERDIR@>
+
+        Options +Indexes +FollowSymLinks
+        IndexOptions +NameWidth=*
+
+        Order allow,deny
+        Allow from all
+
+    </Directory>
+</IfDefine>
+mo-26924037d:/etc/apache2/conf.d # more icontent.conf
+Alias /icontent    /icontent
+ <Directory  /nfs/icontent>
+      Order allow,deny
+       Allow from all
+</Directory>
+Alias /icontent_e    /icontent_e
+ <Directory  /nfs/icontent_e>
+          Order allow,deny
+           Allow from all
+</Directory>
+
+mo-26924037d:/etc/apache2/conf.d #
+
+---------
+10.4.2.21:/vol/vol_LMS_icontent_01  141G   30M  141G   1% /nfs/icontent
+10.4.2.22:/vol/vol_LMS_icontent_02  190G   32M  190G   1% /nfs/icontent_e
+
+-----------
+Dc19 icontent
+
+dc19icontent --> ip-10-240-50-95.dc19.saas.sap.corp
+
+dc19icontentpxy --> 157.133.241.136
+
+dc19icontent01  10.240.48.127
+dc19icontent02  10.240.49.251
+dc19icontent-pxy01 10.240.48.117
+dc19icontent-pxy02 10.240.49.238

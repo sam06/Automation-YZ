@@ -1,0 +1,132 @@
+DB scripts
+------------
+1)select major_release, patch_name, lst_upd_usr, lst_upd_tstmp from ps_patch_info
+where patch_name like 'b1411%';
+2)select major_release, patch_name, lst_upd_usr, to_char(lst_upd_tstmp,'MM/DD/YYYY HH24:MI:SS') from ps_patch_info
+where patch_name like 'b1411%' or patch_name like 'b1408%'
+order by lst_upd_tstmp asc;
+
+3)select * from ps_tenant
+where tenant_id = 'dc12lmspcp06';
+
+4)select major_release, patch_name, lst_upd_usr, to_char(lst_upd_tstmp,'MM/DD/YYYY HH24:MI:SS') from ps_patch_info
+where patch_name = 'b1411.6.0';
+
+5)select * from pa_app_admin
+where app_admin_id like '%VERSION';
+
+6)select data_fld_1 from fr_is_upg_t2.pa_app_admin
+where app_admin_id like '%VERSION';
+
+7)update pa_app_admin
+set data_fld_1 = 'b1411.0.1'
+where app_admin_id = 'APP_VERSION';
+
+8)select syntax_id from PA_NOTIFICATION_SYNTAX where syntax_id IN (
+'WS_REROUTE_ORIGINAL_MANAGER',
+'COMPENSATION',
+'WS_REROUTE_REROUTE_MANAGER');
+
+9)select * from ps_plateau_data where data_type = 'PA_NOTIFICATION_SYNTAX_TAG';
+ select data_id1,data_id2 from ps_plateau_data where data_type = 'PA_NOTIFICATION_SYNTAX_TAG';
+ select syntax_id from PA_NOTIFICATION_SYNTAX where exists (select 'X' from ps_plateau_data where data_type = 'PA_NOTIFICATION_SYNTAX_TAG' and data_id1 = syntax_id);
+
+ 10)sqlplus / as sysdba
+11) drop user PC12LP05_PROD_TMS cascade;
+
+12) /home/oracle/cfdba/refresh
+Usage: ./create_user.sh <SCHEMA> <PASS> <shrt_nm>
+
+13)UPDATE PA_APP_ADMIN SET DATA_FLD_1='UTC', DATA_FLD_2='N' WHERE APP_ADMIN_ID='DB_TIMEZONE';
+COMMIT;
+pass
+sfdc-Avinash@19890102
+plateau-Avinash@19890102
+ultimatix-Avinash@1989011
+tcsmail-Avinash@198901
+System-Avinash@19890102
+sbi-sam82@2006
+icici-sam822006
+voda-Avinash@1989
+14)select * from PS_TENANT;
+
+15)select * from PS_TENANT_HOSTNAME;
+
+SQL SELECT Statement:
+SELECT column1, column2....columnN
+FROM   table_name;
+SQL DISTINCT Clause:
+SELECT DISTINCT column1, column2....columnN
+FROM   table_name;
+SQL WHERE Clause:
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  CONDITION;
+SQL AND/OR Clause:
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  CONDITION-1 {AND|OR} CONDITION-2;
+SQL IN Clause:
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name IN (val-1, val-2,...val-N);
+SQL BETWEEN Clause:
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name BETWEEN val-1 AND val-2;
+SQL LIKE Clause:
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  column_name LIKE { PATTERN };
+SQL ORDER BY Clause:
+SELECT column1, column2....columnN
+FROM   table_name
+WHERE  CONDITION
+ORDER BY column_name {ASC|DESC};
+SQL GROUP BY Clause:
+SELECT SUM(column_name)
+FROM   table_name
+WHERE  CONDITION
+GROUP BY column_name;
+SQL COUNT Clause:
+SQL CREATE TABLE Statement:
+CREATE TABLE table_name(
+column1 datatype,
+column2 datatype,
+column3 datatype,
+.....
+columnN datatype,
+PRIMARY KEY( one or more columns )
+);
+SQL DROP TABLE Statement:
+DROP TABLE table_name;
+SQL CREATE INDEX Statement :
+CREATE UNIQUE INDEX index_name
+ON table_name ( column1, column2,...columnN);
+SQL DROP INDEX Statement :
+ALTER TABLE table_name
+DROP INDEX index_name;
+SQL DESC Statement :
+DESC table_name;
+SQL TRUNCATE TABLE Statement:
+TRUNCATE TABLE table_name;
+SQL ALTER TABLE Statement:
+ALTER TABLE table_name {ADD|DROP|MODIFY} column_name {data_ype};
+SQL ALTER TABLE Statement (Rename) :
+ALTER TABLE table_name RENAME TO new_table_name;
+SQL INSERT INTO Statement:
+INSERT INTO table_name( column1, column2....columnN)
+VALUES ( value1, value2....valueN);
+SQL UPDATE Statement:
+UPDATE table_name
+SET column1 = value1, column2 = value2....columnN=valueN
+[ WHERE  CONDITION ];
+SQL DELETE Statement:
+DELETE FROM table_name
+WHERE  {CONDITION};
+
+===========
+TIME ZONE FIX
+============
+UPDATE PA_APP_ADMIN SET DATA_FLD_1='Europe/Berlin', DATA_FLD_2='N' WHERE APP_ADMIN_ID='DB_TIMEZONE';
+COMMIT;

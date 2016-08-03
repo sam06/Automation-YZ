@@ -1,0 +1,241 @@
+Points to know in Repos 
+
+1)why we define node.[pc8lp01b01].tms.lms_sub_pool=pc8lp01a
+2) defining pub key and id_rsa
+3)
+
+
+Schema Detail :-
+===============
+./installPlateauBootstrap.sh SC16LP01_STAGE_BOOT/DvIUHOMuyk TS01
+
+./installPlateauBootstrap.sh SC16QLP01_STAGE_BOOT/DvIUHOMuyk TS01
+
+./cu63.sh PC16LP01_PROD_TMS HOMuykDvIU TS01
+./cu63.sh PC16QLP01_PROD_TMS HOMuykDvIU TS01
+./cu63.sh SC16LP01_STAGE_TMS LCWyAyKZys TS01
+./cu63.sh SC16QLP01_STAG_TMS LCWyAyKZys TS01
+
+DC16SLM1 10.110.15.110
+
+Host name IP
+dc16lmsprdcrs1.mgd.sf.priv 10.110.15.110 
+dc16lmsprdcrs1.mgd.sf.priv 10.110.15.111 
+dc16lmsprdcrs1.mgd.sf.priv 10.110.15.112
+
+UPDATE PA_APP_ADMIN SET DATA_FLD_1='UTC', DATA_FLD_2='N' WHERE APP_ADMIN_ID='DB_TIMEZONE';
+COMMIT;
+
+============
+oracle::client
+deployment_server
+deployer
+
+19/03/15
+==============
+Adding 3 tenants to prod pool 01
+
+1)pqcmtest01
+PQCMTEST01
+2)pqcmtest02
+PQCMTEST02
+3)pqcmtest03
+PQCMTEST03
+
+Adding 2 tenants to prod QC pool
+
+1)pqcatest01
+PQCATEST01
+
+2)pqcatest02
+PQCATEST02
+
+./InstallPlateauDB.sh PQCATEST01/aNqyjKt#Zv@10.110.15.110/DC16PLM1
+
+select * from PS_TENANT;
+Insert into PS_TENANT (TENANT_ID,USERNAME,PASSWORD,ACTIVE) values ('pqcatest02','PQCATEST02','a629f3a6b68edc6eaac4230bbc243e53','Y');
+
+select * from PS_TENANT_HOSTNAME;
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('pqcatest02',1,'pqcatest02.lms.sapsf.eu','Y','N');
+
+pqcatest02.plateau.com.conf
+
+pqcmtest01.plateau.com.conf
+
+scp -r pqcmtest01.plateau.com.conf root@10.16.20.31:/etc/apache2/sites-enabled/
+
+pqcmtest03.lms.sapsf.eu
+pqcmtest03.plateau.com.conf
+wget -p https://pc16lqap01.lms.sapsf.eu
+wget -p http://pc16lp01
+
+curl -Is https://pc16lqap01.lms.sapsf.eu | head -1
+
+/nfs/shared/test/certificate.sh
+
+==========================
+sqlplus PC16LP01_PROD_BOOT/DSTDJTc29@10.110.15.110/DC16PLM1
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('pc16lp01',11,'10.16.30.87','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('pc16lp01',12,'10.16.30.88','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('pc16lp01',13,'10.16.30.89','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('pc16lp01',14,'10.16.30.90','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('pc16lp01',15,'10.16.30.91','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('pc16lp01',16,'10.16.30.92','Y','N');
+commit;
+
+delete from PS_TENANT_HOSTNAME where TENANT_ID='pc16lp01' and hostname='pc16lp01u01.mgd.sf.priv';
+delete from PS_TENANT_HOSTNAME where TENANT_ID='pc16lp01' and hostname='pc16lp01u02.mgd.sf.priv';
+delete from PS_TENANT_HOSTNAME where TENANT_ID='pc16lp01' and hostname='pc16lp01u03.mgd.sf.priv';
+delete from PS_TENANT_HOSTNAME where TENANT_ID='pc16lp01' and hostname='pc16lp01u04.mgd.sf.priv';
+delete from PS_TENANT_HOSTNAME where TENANT_ID='pc16lp01' and hostname='pc16lp01u05.mgd.sf.priv';
+delete from PS_TENANT_HOSTNAME where TENANT_ID='pc16lp01' and hostname='pc16lp01u06.mgd.sf.priv';
+commit;
+
+======30/03/15
+sqlplus  PC16QLP01_PROD_BOOT/DSTDJTc29@10.110.15.110/DC16PLM1
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('pc16lqap01',17,'10.16.30.125','Y','N');
+commit;
+
+sqlplus  SC16LP01_STAGE_BOOT/DSTDJTc29@10.110.15.110/DC16SLM1
+
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',11,'10.16.30.97','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',12,'10.16.30.98','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',13,'10.16.30.99','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',14,'10.16.30.199','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',15,'10.16.30.101','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',16,'10.16.30.102','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',17,'10.16.30.93','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',18,'10.16.30.94','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',19,'10.16.30.95','Y','N');
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lp01',20,'10.16.30.96','Y','N');
+commit;
+
+sqlplus  SC16QLP01_STAGE_BOOT/DSTDJTc29@10.110.15.110/DC16SLM1
+
+UPDATE PS_TENANT_HOSTNAME 
+SET HOSTNAME='10.16.30.126'
+
+Insert into PS_TENANT_HOSTNAME (TENANT_ID,PRIORITY,HOSTNAME,ACTIVE,SSL) values ('sc16lqap01',12,'10.16.30.126','Y','N');
+commit;
+
+===================07/04/15
+when 'mgd.sf.priv'
+                checkOut('MGD-RZ', "#{repo_url}/Automation/Automation-Configs", 'MGD-RZ')
+                checkOut('MGD-YZ', "#{repo_url}/Automation/Automation-Configs-YZ", 'MGD-YZ')
+---------------				
+[root@dpl001 config]# pwd
+/nfs/shared/SaaSOperations/OneTime-Config-Setup/Automation-Utils/config
+[root@dpl001 config]# ls
+ashfed_login.yml  config.properties  dc13_login.yml  dc15_login.yml  login.yml
+[root@dpl001 config]#
+
+Monitoring external jobs 1.2
+Multijob Plugin 1.10
+Parameterized Trigger Plugin 2.22
+
+	b1411.12.1
+DB version:	b1411.6.1
+
+============
+Trigger builds remotely 
+
+pc16mgtppt01.mgd.sf.priv
+
+------------
+dc16mgtdpl02:/local/jenkins/workspace/OneTime-Config-Setup/config # ls
+ashfed_login.yml  config.properties  dc13_login.yml  dc15_login.yml  dc16_login.yml  login.yml
+dc16mgtdpl02:/local/jenkins/workspace/OneTime-Config-Setup/config #
+a)changed in config.properties
+b)created dc16_login.yml
+c)changed in common.rb in script folder.
+d)[deployer@dc16mgtdpl02 /local/opt/oracle/11.2.0/client_home1/network/admin] need to update tnsname.ora file
+
+==========
+node.[sc16lp01c01].tms.lms_sub_pool=sc16lp01c01a
+node.[sc16lp01c02].tms.lms_sub_pool=sc16lp01c02b
+run puppet new 
+
+./cmd_by_pool.sh ${DataCenterCode}-${Zone} ${pool_id} "facter fqdn; sudo puppet agent -t --configtimeout 600"
+./cmd_by_pool.sh ${DataCenterCode}-${Zone} ${pool_id} "facter fqdn; sudo puppet agent -t --configtimeout 600" ${pool_id}b
+
+cd ${base_dir}/scripts
+if [ `grep lms_sub_pool ${NFS_DIR}/Automation-Config/${DataCenterCode}-${Zone}/node.properties | cut -d'=' -f2 | grep "${pool_id}a" |wc -l` -eq 0 ]; 
+
+5bbf83b498c18c3712eeac747f45d3c5
+
+==========16/05/15
+jenkins.MGD.URL=http://10.16.213.40:8080/job/
+jenkins.MGD.user=lmsautoprovision
+jenkins.MGD.apikey=51285ae83efb4495e15e5d3bca0a50f9
+
+Add the above lines in config.property
+
+===========16/04/15
+/local/opt/oracle/11.2.0/client_home1/network/admin/tnsnames.ora
+
+==========21
+when 'MGD'
+      dplNode = 'dc16mgtdpl02.mgd.sf.priv'
+when 'MGD'
+      domain = 'mgd.sf.priv'
+when 'MGD'
+      client = JenkinsApi::Client.new(YAML.load_file(File.expand_path("#{$automation_utils_dir}/config/dc16_login.yml", __FILE__)))
+
+===============25/04/15
+/nfs/repo/yum/plateau/5.5
+You must use POST method to trigger builds. (From scripts you may instead pass a per-project authentication token, or authenticate with your API token.) If you see this page, it may be because a plugin offered a GET link; file a bug report for that plugin.
+
+========28/04/15
+cp /nfs/shared/Sam/authorized_keys /home/deployer/.ssh/
+chown deployer:deployer /home/deployer/.ssh/authorized_keys
+mgdoracleReportDBList
+
+==========
+sc16lp01,sqcmtest01,sqcmtest02,sqcmtest03
+
+foundation-psl-b1502.13.0-b1502.13.0-201505051658.x86_64.rpm
+
+8197225588
+
+/nfs/shared/SaaSOperations/OneTime-Config-Setup/Automation-Utils/scripts
+
+10.16.213.36    yum.mgd.sf.priv   yum
+10.16.213.37    repos.mgd.sf.priv
+zypper install mercurial=2.5.1-89.1
+
+saasops 7R!ZHE9
+
+lms-health-check-data-import
+
+===========pull data.sh
+DEBUG_MODE=""
+DEST_DIR="../data"
+SFTP_SERVER="sftp.plateau.com"
+SFTP_USER="saasops"
+UPLOAD_DIR="/SaaSOPsAnalytics"
+
+============
+DEBUG_MODE=""
+DEST_DIR="../data"
+SFTP_SERVER="sftp16-int.mgd.sf.priv"
+SFTP_USER="qa"
+UPLOAD_DIR="/FEED/UPLOAD"
+
+/SaaSOPsPoolMetrics
+
+gem install net-sftp
+
+============29/07/15
+pc16lwicont01	10.16.20.132	Web_iContent-Proxy
+pc16lwicont02 	10.16.20.133	Web_iContent-Proxy
+pc16licont01 	10.16.20.130	Web iContent-IIS
+pc16licont02 	10.16.20.131	Web iContent-IIS
+
+DC16_SVC_IcontentIIS
+
+
+Ic@ntent123
+
+\\6.249.109.7\SFA\sfa_icontent_prd_02
+
+

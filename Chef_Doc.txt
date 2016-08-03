@@ -1,0 +1,57 @@
+doc for chef 
+
+doc.opscode.com/chef_overview.html
+
+https://manage.chef.io/organizations/k4sam  Hosted chef server
+
+https://github.com/sam06/learning_chef  github repository
+
+https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Instances:sort=tag:Name  Virtual server on AWS.
+
+
+
+==>What is a resource?
+A resource represents a piece of infrastructure and its desired state, such as a package that should be installed, a service that should be running, or a file that should be generated.
+Resources describe the what, not the how
+A recipe is a file that holds one or more resources. Each resource declares what state a part of the system should be in, but not how to get there. Chef handles these complexities for you
+Resources have actions
+
+==>What is a recipe?
+A recipe is a collection of resources that describes a particular configuration or policy. A recipe describes everything that is required to configure part of a system. Recipes do things such as:
+
+install and configure software components.
+manage files.
+deploy applications.
+execute other recipes.
+Recipes organize resources
+
+
+==> Configure a package and service
+Like files, packages and services are also types of resources. Chef applies resources in the order you specify
+
+-->Cookbook
+
+A cookbook provides structure to your recipes and enables you to more easily reference external files, such as our web server's home page. In essence, a cookbook helps you stay organized.
+With a cookbook you're now better organized. A cookbook adds structure to your work. You can now author your HTML code in its own file and use a template resource to reference it from your recipe
+
+==>Run-LISt
+
+A run-list specifies each of the individual recipes from your cookbook that you want to apply
+The run-list lets you specify which recipes to run, and the order in which to run them
+
+
+
+
+ssh -i 'c:\Users\c5173961\.ssh\Firstkey.pem' ec2-user@54.86.118.39
+
+chef gem install knife-windows
+
+-->knife cookbook site download learn_chef_iis
+
+curl -I http://www.cnn.com | grep HTTP/1.1
+
+==>Bootstraping the node from workstation
+knife bootstrap 52.91.138.192 --ssh-user ec2-user --sudo --identity-file 'c:\Users\c5173961\.ssh\Firstkey.pem' --node-name server2 --run-list 'recipe[learn_chef_httpd]'
+
+==>Running chef-clinet on node from Workstation
+knife ssh ADDRESS 'sudo chef-client' --manual-list --ssh-user USER --identity-file IDENTITY_FILE

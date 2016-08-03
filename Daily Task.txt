@@ -1,0 +1,2075 @@
+﻿http://pcappp05u04.ams2.sf.priv:8080/learning/admin/nativelogin.jsp
+DC2 prod pool 05 new nodes 
+----------------------------
+pcappp05u04     10.2.77.150    
+pcappp05u05     10.2.77.151    
+pcappp05u06     10.2.77.152    
+pcappp05b02     10.2.77.153    
+pcappp05c02     10.2.77.154    
+pcappp05r02     10.2.77.155    
+
+================
+pcappp06u01,pcappp06u02,pcappp06u03,pcappp06b01,pcappp06b02,pcappp06b03
+
+
+
+RDP001-Remote desktop   
+RDP002-Remote desktop
+allianzapache-sc01.ams2.sf.priv - not abale to login
+spm001.ams2.sf.priv - stage puppet master
+spm002.ams2.sf.priv -stage puppet master
+spm003.ams2.sf.priv -stage puppet master
+spm004.ams2.sf.priv -stage puppet master
+swissre-sc01.ams2.sf.priv - application node for swissre customer 
+
+==================17/12/14
+9295
+https://qa8laqp02.plateau.com/learning/admin/nativelogin.jsp
+
+
+QA8LAQP02_TMS/QmicfdNlqA@ASHQCS59
+
+------------
+PS2LP01_BOOT/ght458sd@DC2DLM01
+
+PS2LP01_SALES_TMS/D45gT6yH@DC2DLM01
+
+
+--------
+[deployer@dpl001 ~]$ sqlplus PS2LP01_BOOT/ght458sd@DC2DLM01
+
+SQL*Plus: Release 11.2.0.1.0 Production on Wed Dec 17 08:43:42 2014
+
+Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.3.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Data Mining
+and Real Application Testing options
+
+SQL> exit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.3.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Data Mining
+and Real Application Testing options
+
+----------------
+[deployer@dpl001 ~]$ sqlplus PS2LP01_SALES_TMS/D45gT6yH@DC2DLM01
+
+SQL*Plus: Release 11.2.0.1.0 Production on Wed Dec 17 08:45:54 2014
+
+Copyright (c) 1982, 2009, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.3.0 - 64bit Production
+With the Partitioning, Automatic Storage Management, OLAP, Data Mining
+and Real Application Testing options
+
+SQL>
+
+-----------------
+puppet agent -t  --server=puppetprod.ash.sf.priv  --ca_server  ppmca001.ash.sf.priv
+/nfs/saasops/lms_extensions
+
+/local/customers
+
+=========
+[0;36mnotice: WARNING: ps2lp01b03 - No Puppet Configuration Found!  Installing Single Master Instance[0m
+[0;36mnotice: /Stage[main]//Notify[WARNING: ps2lp01b03 - No Puppet Configuration Found!  Installing Single Master Instance]/message: defined 'message' as 'WARNING: ps2lp01b03 - No Puppet Configuration Found!  Installing Single Master Instance'[0m
+[1;35merr: /Stage[main]/Plateau_user/File[/local/customers]/ensure: change from absent to directory failed: Cannot create /local/customers; parent directory /local does not exist[0m
+[1;35merr: /Stage[main]/Nfs::Client::Lms_extensions/File[/nfs/saasops/lms_extensions]/ensure: change from absent to directory failed: Cannot create /nfs/saasops/lms_extensions; parent directory /nfs/saasops does not exist[0m
+[0;36mnotice: /Stage[main]/Nfs::Client::Lms_extensions/Mount[nfs_extensions_mount]: Dependency File[/nfs/saasops/lms_extensions] has failures: true[0m
+[0;33mwarning: /Stage[main]/Nfs::Client::Lms_extensions/Mount[nfs_extensions_mount]: Skipping because of failed dependencies[0m
+[0;36mnotice: /Stage[main]/Mc-facts/File[/var/lib/puppet/facts.yaml]/content: 
+--- /var/lib/puppet/facts.yaml	2014-12-17 13:03:46.000000000 +0100
++++ /tmp/puppet-file20141217-21246-vg4y3g-0	2014-12-17 13:14:03.000000000 +0100
+
+=========18/12/2014
+
+/dev/vg00/lv_local      /local  ext3    acl,user_xattr  1       2
+
+PSEXPVALIDATE1_BOOT
+
+PSEXMTENANT1_PROD_TMS
+PSEXPVALIDATE1_PROD_TMS
+
+
+PROJOPS-5376
+
+CR-5651 -Juniper: Peak Season Expansion
+
+Remove/Delete the monitoring from the Zabbix and Sitescope(PROJOPS-5380)
+
+==========dc10 peak season VMs
+sc10lp02u03,10.10.30.188
+sc10lp02u04,10.10.30.189
+sc10lp02b02,10.10.30.190
+sc10lp02c02,10.10.30.191
+sc10lp02r02,10.10.30.192
+sc10lp03b02,10.10.30.193
+scappp01b02,10.10.30.194
+pc10lp02u03,10.10.30.195
+pc10lp02b02,10.10.30.196
+pc10lp02b03,10.10.30.197
+pcwebp01n05,10.10.20.111
+pcwebp01n06,10.10.20.112
+
+================dc12 pool05
+
+dc12lmsp05pcb01,dc12lmsp05pcu01,dc12lmsp05pcu02,dc12lmsp05pcu03,dc12lmsp05pcu04
+
+----
+node.[dc12lmsp05pcb01].fqdn=dc12lmsp05pcb01.rot.od.sap.biz
+node.[dc12lmsp05pcb01].tms.connectorsenabled=false
+node.[dc12lmsp05pcb01].tms.runjobs=true
+node.[dc12lmsp05pcb01].tms.poolHeavyWeightCapacity=10
+node.[dc12lmsp05pcb01].tms.poolLightWeightCapacity=50
+node.[dc12lmsp05pcb01].tms.poolReportCapacity=50
+node.[dc12lmsp05pcb01].tms.poolConnectorCapacity=10
+node.[dc12lmsp05pcb01].tms.tenantChangeMonitorDelay=15
+
+node.[dc12lmsp05pcu01].fqdn=dc12lmsp05pcu01.rot.od.sap.biz
+node.[dc12lmsp05pcu01].tms.connectorsenabled=false
+
+node.[dc12lmsp05pcu02].fqdn=dc12lmsp05pcu02.rot.od.sap.biz
+node.[dc12lmsp05pcu02].tms.connectorsenabled=false
+
+node.[dc12lmsp05pcu03].fqdn=dc12lmsp05pcu03.rot.od.sap.biz
+node.[dc12lmsp05pcu03].tms.connectorsenabled=false
+
+node.[dc12lmsp05pcu04].fqdn=dc12lmsp05pcu04.rot.od.sap.biz
+node.[dc12lmsp05pcu04].tms.connectorsenabled=false
+
+==========
+dc12lmsp01pcu05 - 10.118.77.106
+dc12lmsp01pcu06 - 10.118.77.107
+dc12lmsp01pcu07 - 10.118.77.108
+dc12lmsp01pcu08 - 10.118.77.109
+dc12lmsp01pcu09 - 10.118.77.110
+dc12lmsp01pcu10 - 10.118.77.111
+dc12lmsp01pcb02
+dc12lmsp01pcb03
+dc12lmsp01pcc02
+dc12lmsp01pcc03
+dc12lmsp01pcr03
+dc12lmsp01pcr04
+
+===============
+RunDBSchemaValidation
+Language_Pack_Deployment
+Post_DB_Upgrade_AdHocScript
+
+===============12/01/15
+dc12lmsp01pcb02,dc12lmsp01pcb03,dc12lmsp01pcc02,dc12lmsp01pcc03,dc12lmsp01pcr03,dc12lmsp01pcr04
+
+/local/opt/oracle/11.2.0/client_home1/network/admin/tnsnames.ora
+
+puppet agent --onetime --no-daemonize -v --server dc12mgtppmca.rot.od.sap.biz
+puppet agent --onetime --no-daemonize -v --server dc15mgtppmca.sha.sf.priv
+
+puppet agent -t  --server=dc12mgtppm03.rot.od.sap.biz  --ca_server  dc12mgtppmca.rot.od.sap.biz
+
+pc12lp02b01,pc12lp02b02,pc12lp02c01,pc12lp02c02,pc12lp02r01,pc12lp02r02
+
+=================DC15
+ca_server = dc15mgtppmca.sha.sf.priv
+    environment = redzone
+    server = puppetprod.sha.sf.priv
+=============
+Env - prod
+Bootstarp schema name - PC15LMSQCP01_PROD_BOOT
+password- i1hS81sdL
+
+Customer schema name -PC15LMSQCP01_PROD_TMS
+password- ksd16sjStj
+
+====================
+confluence.successfactors.com/display/RE/VJDBC+Setup 
+
+=================
+zypper install puppet=2.7.18
+
+puppet agent --onetime --no-daemonize -v --server dc12mgtppmca.rot.od.sap.biz
+
+PROJOPS-5526
+
+============22/01/15
+notice: /Stage[main]/Dc12lmspcp06/Tms[tms_dc12lmspcp06]/Exec[psl-scripts-executable-pkg]/returns: executed successfully
+notice: /Stage[main]/Nfs::Client::Lms_doc_library/Mount[/nfs/applications/learning/quickguides]/ensure: ensure changed 'unmounted' to 'mounted'
+err: /Stage[main]/Nfs::Client::Lms_doc_library/Mount[/nfs/applications/learning/quickguides]: Could not evaluate: Execution of '/bin/mount -o rw,hard,intr,timeo=600,actimeo=600,nolock,proto=tcp,rsize=32768,wsize=32768 /nfs/applications/learning/quickguides' returned 32: mount.nfs: DNS resolution failed for vnsa5258s1: Name or service not known
+
+notice: /Stage[main]/Dc12lmspcp06/Exec[start-tms.sh]: Dependency File[/usr/local/bin/lms_logrotate.rb] has failures: true
+warning: /Stage[main]/Dc12lmspcp06/Exec[start-tms.sh]: Skipping because of failed dependencies
+notice: /Stage[main]/Dc12lmspcp06/Tmsstopscript[dc12lmspcp06_stopScript]/File[stop-tms.sh]: Dependency File[/usr/local/bin/lms_logrotate.rb] has failures: true
+warning: /Stage[main]/Dc12lmspcp06/Tmsstopscript[dc12lmspcp06_stopScript]/File[stop-tms.sh]: Skipping because of failed dependencies
+notice: /Stage[main]/Dc12lmspcp06/Tmsds[dc12lmspcp06_tmsDS]/File[PlateauDS.properties]: Dependency File[/usr/local/bin/lms_logrotate.rb] has failures: true
+warning: /Stage[main]/Dc12lmspcp06/Tmsds[dc12lmspcp06_tmsDS]/File[PlateauDS.properties]: Skipping because of failed dependencies
+notice: Finished catalog run in 123.33 seconds
+vsa398776[PC12LP06U02]:~ #
+
+=====================
+http://dc8lmspcp23b03.plateau.priv:8080/learning/admin/sysadmin/body_users_summary_view.jsp?userName=HOSTING
+
+PSEXPVALIDATE_BOOT/jalnuJCgFR MIDMARKET
+
+PSEXPVALIDATE_PROD_TMS hiOdBCuLrH MIDMARKET
+
+PSEXPMTENANT_PROD_TMS CDONFgqyvg TS01
+
+http://pc12lp06u01.rot.od.sap.biz:8080/learning/admin/nativelogin.jsp
+
+PROJOPS-5526
+
+For TESTPROD SPLIT
+
+pc15lmsqcp01.sha.sf.priv
+
+PC15LMSQCP01_PROD_BOOT/i1hS81sdL@DC15PLM2
+
+CR-6118 -Upgading poolb1411.p8 
+
+:%s/'TS_/'TS01_TS_/g
+DC4LMSPCP01_PROD_TMS/c16439871e@DC4PLM01
+
+puppet agent -t --server=dc12mgtppm04.rot.od.sap.biz
+
+SC8LP16_STAGE_BOOT/qnOt4beDHQGT TS01
+
+SC8LP16_STAGE_TMS UJVFxYLsGO TS01
+drop user SC8LP16_STAGE_TMS cascade;
+
+SC8LQAP01_BOOT gfdk5is2 TS01
+
+SC8LQAP01_STAGE_TMS UJVFxYLsGO TS01
+
+pool 16 -flcrystals,prolamsa,acuitybrands,amwater,buffwings,fortna,servicioadm,capufe,ptdjarum,ezcorp,popa,mindtree,nalsani,rotoplas,genomichlth,bcidaho
+pool18 - brhealth,pratidoncia
+pool14 - alphanatdcpmid,ameruniv,alphanat,archway,barrickg-test,bechtel,cashamer,emblem,edison,entegris,gtechhold,hilton,hornbeck,imftech,lincolnna,napperville,prologis,sargelund,stlukes,southtexasblood,trican,wlgore,wmsgaming,wellstar,westernfin,wholefood,wrightp
+pool17 - robinson,ymcatwinc,collette,calsonic,allistran,campbell,chemtura,duratex,esurance,farmcredit,firstmer,healthnow,insight,montefiore,ravenind,natgrid,sandisk,westjet,terpel,lci,bpcl,enova,necam,nghs,sabre,sicoob,sanjac,nana,thr,toro
+pool14 -gvt,osde,abeam,act,basf,brook,cec,cine,itron,mhm,plic,pulte,tcu,ccs,uspi,wyn
+
+SAASOPS-9688- Move Stage Tenants to New Pools in DC8 in prep for Test/Prod Split
+
+PROJOPS-5852
+18002093229 - 
+
+ 
+scappp01u01.syd.sf.priv	 - 10.10.30.51
+scappp01u02.syd.sf.priv	 - 10.10.30.52
+scappp01c01.syd.sf.priv	 - 10.10.30.54
+scappp01r01.syd.sf.priv	 - 10.10.30.55
+scappp01b01.syd.sf.priv	 - 10.10.30.53
+scappp01b02.syd.sf.priv	 - 10.10.30.194
+sc12lp01u01,sc12lp01u02,sc12lp01u03,sc12lp01u04,sc12lp01b01,sc12lp01b02,sc12lp01c01,sc12lp01c02,sc12lp01r01,sc12lp01r02
+
+
+10.118.248.23 - POOL02 IN DC12 F5 DETAIL IN SFCLOUD
+PC12LP06_PROD_BOOT pLd871jJss TS01
+
+PC12LP06_PROD_TMS/ksKS7sj1dk@TS01
+
+/nfs/shared/SaaSOperations/OneTime-Config-Setup/Automation-Config/
+
+PC12LP05_PROD_BOOT/pLd871jJss TS01
+
+drop user DC12LMSPCP05_PROD_TMS cascade;
+drop user DC12LMSPCP05_PROD_BOOT cascade;
+drop user DC12LMSPCP06_PROD_BOOT cascade;
+
+drop user PC12LP06_PROD_BOOT cascade;
+drop user PC12LP06_PROD_TMS cascade;
+
+DC12LMSPCP05_PROD_TMS ksKS7sj1dk TS01- old
+PC12LP05_PROD_TMS afb3ce46 TS01
+
+PC12LP06_PROD_BOOT
+14364fcfbaf638b9f22ba00be69a9157
+
+sc8lp12
+sc8lp12
+
+PROJOPS-5848
+=================
+PC12LP06_BOOT/ksKS7sj1dk TS01  
+PC12LP06_PROD_TMS/ksKS7sj1dk TS01
+
+pc12lp05u01,pc12lp05u02,pc12lp05u03,pc12lp05u04,pc12lp05u05,pc12lp05u06,pc12lp05b01,pc12lp05b02,pc12lp05c01,pc12lp05c02,pc12lp05r01,pc12lp05r02
+
+PC12LP01_BOOT/ksKS7sj1dk TS01
+PC12LP01_PROD_TMS/ksKS7sj1dk TS01
+
+PC12LP02_BOOT/ksKS7sj1dk MIDMARKET
+PC12LP02_PROD_TMS ksKS7sj1dk MIDMARKET
+
+PC12LP03_BOOT/ksKS7sj1dk MIDMARKET
+PC12LP03_PROD_TMS ksKS7sj1dk MIDMARKET
+
+=====================
+drop user PC12LP05_PROD_BOOT cascade;
+PC12LP05_BOOT/ksKS7sj1dk TS01
+
+SC12LP01_STAGE_TMS aRLgw_CgfS TS01
+SC12LP02_STAGE_TMS yKZysLCWyA MIDMARKET
+SC12LP03_STAGE_TMS oVnyHUDAPd MIDMARKET
+SC12LP05_STAGE_TMS iWAAwLvVru TS01
+SC12LP06_STAGE_TMS HOMuykDvIU TS01
+SC12LP07_STAGE_TMS rWiZPGfeSN TS01
+
+dashboard:http://saasdashboard.successfactors.com/analytics/dashboard/BizxInstances.jsp
+username:HOSTING
+Password:TyMR4d1$1
+
+puppet agent -t  --server=dc12mgtspm03.rot.od.sap.biz
+
+check lms_verify.sh on dc15mgtppmca.sha.sf.priv
+
+=============14/02
+
+http://jenkins02.plateau.priv:8080/job/VerificationTasks/4139/console
+
+[deployer@dpl001 ~/TEMP/bizx_int_script]$ java -cp "./*" com.sap.lms.tools.LMSConfigUpdator newBizXProperty.csv > bizx_update.txt
+java.lang.ArrayIndexOutOfBoundsException: 6
+        at com.sap.lms.tools.LMSConfigUpdator.parseCSV(LMSConfigUpdator.java:72)
+        at com.sap.lms.tools.LMSConfigUpdator.main(LMSConfigUpdator.java:44)
+
+wow.plateau.com - dns is not registtered
+vha.plateau com. dns not registerd
+
+===============25-02-15
+The number is very less .It has been reached to 0
+Closing all the issue within defined SLA for the customer
+====================
+
+10.8.2.12:/vol/vol1_export_logs_01/wwwlogs  2.7T  2.5T  127G  96% /nfs/wwwlogs
+10.8.2.12:/vol/vol1_export_logs_01/applogs  2.7T  2.5T  127G  96% /nfs/applogs
+nfs001.ash.sf.priv:/export/home              30G  9.1G   19G  33% /home/roaming
+nfs001.ash.sf.priv:/export/shared           310G  248G   46G  85% /nfs/shared
+10.8.2.11:/vol/vol1_LMS_Web_Static/pc8lw     50G   19M   50G   1% /var/www/html
+10.8.2.12:/vol/vol1_COM_heapdump/release    800G  529G  272G  67% /release
+
+ant
+-rw-r--r-- 1 jenkins jenkins   90421 Feb 18 10:11 ant.jpi
+credentials
+cvs
+external-monitor-job
+ javadoc
+ ldap
+  mailer
+  nodelabelparameter.hpi
+  
+  zypper addrepo http://pkg.jenkins-ci.org/opensuse/ jenkins
+  
+============
+IMP-231 <http://jira.successfactors.com/browse/IMP-231> 
+SAASOPS-10052
+Monitoring Data Collection/Configuration
+
+
+
+sqlplus E02001_STAGE_TMS D45gT6yH SALES001;
+sqlplus E02011_STAGE_TMS D45gT6yH SALES001;sqlplus E02021_STAGE_TMS D45gT6yH SALES001;sqlplus E02031_STAGE_TMS D45gT6yH SALES001;sqlplus E02041_STAGE_TMS D45gT6yH SALES001;sqlplus E02111_STAGE_TMS D45gT6yH SALES001;
+
+
+\\INLN50850302A\Users\C5183033\Desktop\OPenStack (file://inln50850302a/Users/C5183033/Desktop/OPenStack)
+
+(file://INLN50850302A/Users/C5183033/Desktop/Movies (file://inln50850302a/Users/C5183033/Desktop/Movies))
+
+
+https://repos.sf.priv/SAAS-Standalone-Tools/AutomationUtils
+https://scm001.mgd.sf.priv/SAAS-Standalone-Tools/AutomationUtils
+
+http://10.16.213.37/SAAS-Standalone-Tools/AutomationUtils
+
+plugins.sshslaves.SSHLauncher.copySlaveJar(SSHLauncher
+
+dc2lp01b010
+
+PSEXPMTENANT_BOOT/jalnuJCgFR
+jalnuJCgFR
+
+PSEXMTENANT1_PROD_TMS/orhqZdBtet
+pqcatest01.lms.sapsf.eu
+
+======23/03/15
+10.2.30.107
+
+I831670
+
+uLN, user1_9367_FN
+
+https://pc16lqap01.lms.sapsf.eu/learning/user/onlineaccess/scorm/seqNavigationRequestProcessAction.do
+
+SAP Labs
+SJR Park ,Tower 1,6th Floor(opposite saty Sai Hospital)
+Plot No 13,14 & EPIP Industrial Area
+KR Puram Hobli ,Bangalore 
+560066
+
+puppet agent -t --configtimeout 600 --server=dc12mgtppm03.rot.od.sap.biz
+puppet agent -t --configtimeout 600 --server=ppmca001.syd.sf.priv
+
+puppet agent -t --configtimeout 600 --server=ppmca001.ash.sf.priv
+
+puppet agent -t --configtimeout 600 --server=spm001.ash.sf.priv
+puppet agent -t --configtimeout 600 --server=ppm001.ash.sf.priv
+
+PSEXPMTENANT_BOOT/jalnuJCgFR@DC2PCE11
+
+9886681424
+
+10.16.213.71 - dc16mgtdpl03
+10.16.30.103 - sc16lvjdbc01
+10.16.20.124 - sc16lshib02
+10.16.20.35 -  pc16lshib01
+10.16.20.36 -  pc16lshib02
+10.16.20.33 - pc16lw03
+
+pc16mgtscm01.mgd.sf.priv
+10.16.213.37
+
+sqlplus SC8LP17_STAGE_BOOT/XttGbC2CJh@DC8SLM04
+
+10.10.20.15
+dc12mgtppmca.rot.od.sap.biz
+puppet agent -t --configtimeout 600 --server dc12mgtppmca.rot.od.sap.biz
+
+puppet agent -t --configtimeout 600 --server pc16mgtppt02.mgd.sf.priv
+puppet agent -t --configtimeout 600 --server ppmca001.syd.sf.priv
+
+%deployer ALL=NOPASSWD: ALL
+
+7cHozv6nb0=
+
+lmsautoprovision
+kL4aU`5~
+
+=========21/04/15
+ProxyPass /vjdbc/ http://dc12vjdbcp01cn01.rot.od.sap.biz:8080/kansai-stage/
+ProxyPassReverse /vjdbc/ http://dc12vjdbcp01cn01.rot.od.sap.biz:8080/kansai-stage/
+
+ProxyPass /vjdbc/ http://pool_unassigned/
+ProxyPassReverse /vjdbc/ http://pool_unassigned/
+
+sqlplus SC16LP01_STAGE_BOOT/DSTDJTc29@DC16SLM1
+
+10.110.15.110:DC16PLM1:1521:cso123
+10.110.15.110:DC16SLM1:1521:cso123
+
+sqlplus PC16QCMDUMP_PROD_TMS/aNqyjKt#Zv@DC16PLM1 dummy tenat
+
+sqlplus PC16QCADUMP_PROD_TMS/aNqyjKt#Zv@DC16PLM1 prod qc tenant
+
+sqlplus PC16QLP1_PROD_TMS/aNqyjKt#Zv@DC16PLM1
+sqlplus PQCATEST02/aNqyjKt#Zv@DC16PLM1
+ppmca001.syd.sf.priv
+
+=========
+/nfs/repo/yum/plateau/5.5/lms in dc8
+/yum_data/yum/plateau/5.5/lms in dc16
+
+yum.ash.sf.priv
+10.171.198.15
+1-56/15 * * * * 
+
+Inside Jenkins: Manage Jenkins > Manage Plugins > There is a tab called 'Advance configuration' and in that page there is an option to upload a plugin (the extension of the file must be hpi)
+
+SMRTCORP_STAGE_BIRT SMRTCORP_STAGE_TMS
+
+libaugeas0-0.9.0-4.1.2.x86_64
+/usr/bin/zypper --quiet install --auto-a0_27-1-1' returned 104: Package 'java-psl-1.6.0_27-1-1' not found
+
+====
+Updated the change.
+
+pc16mgtyum01:/etc/apache2/conf.d # df -h
+Filesystem                                                               Size  Used Avail Use% Mounted on
+/dev/mapper/vg00-lv_root                                                 6.9G  5.0G  1.7G  76% /
+devtmpfs                                                                 3.9G  152K  3.9G   1% /dev
+/dev/mapper/vg00-lv_tmp                                                  4.0G  386M  3.4G  11% /tmp
+/dev/mapper/vg00-lv_var                                                  5.0G  603M  4.1G  13% /var
+/dev/mapper/vg00-lv_local                                                 50G  202M   47G   1% /usr/local
+[2a00:0da9:0005:14b3:00e6:0000:0008:0007]:/SFA/sfa_lms_shares            500G  240G  261G  48% /nfs/shared
+/dev/sda1                                                                145M   35M  103M  26% /boot
+/dev/mapper/vg00-lv_local                                                 50G  202M   47G   1% /local
+[2a00:0da9:0005:14b3:00e6:0000:0008:0007]:/SFA/homes/usr_home            100G  2.0G   99G   2% /Users/roaming
+[2a00:0da9:0005:14b3:00e6:0000:0008:0007]:/SFA/transfers/hostctrl        100G  5.6G   95G   6% /usr/sap/hostctrl/new
+[2a00:0da9:0005:14b3:00e6:0000:0008:0007]:/SFA/yum_repodata_01/yum_data  600G  526G   75G  88% /yum_data
+
+Additionally updated the  yum.conf and Rsynce cron with the new mount detail.
+
+=========
+Web iContent-Entitlement
+App iContent-Entitlement
+Web iContent-IIS 
+Web_iContent-Proxy
+App iContent-OFBIZ
+
+pc16lwicont01	10.16.20.132 - Web_iContent-Proxy
+pc16lwicont02 	10.16.20.133 - Web_iContent-Proxy
+pc16licont01 	10.16.20.130 - Web iContent-IIS
+pc16licont02 	10.16.20.131 - Web iContent-IIS
+
+Server=zbxproxy
+a
+VG_MV_KA_SAPGRP_250_011113
+
+===========
+qm8laqp01u01,qm8laqp01u01_notused,10.20.68.60
+qm8laqp01u02,qm8laqp01u02_notused,10.20.68.73
+qm8laqp01c01,qm8laqp01c01_notused,10.20.68.76
+qm8laqp01b01,qm8laqp01b01_notused,10.20.68.75
+qm8laqp01r01,qm8laqp01r01_notused,10.20.68.77
+qa8laqp01u02,qa8laqp01u02_notused,10.20.68.79
+qm8laap01u01,qm8laap01u01_notused,10.20.68.57
+qm8laap01u02,qm8laap01u02_notused,10.20.68.58
+qm8laap01b01,qm8laap01b01_notused,10.20.68.59
+
+===========
+spm001.plateau.priv
+
+ppmca001.plateau.priv
+
+puppet agent -t --server ppmca001.syd.sf.priv
+
+ProxyPass /vjdbc/ http://pool_unassigned/
+ProxyPassReverse /vjdbc/ http://pool_unassigned/
+
+
+
+
+
+err: Could not retrieve catalog from remote server: Error 400 on SERVER: Could not find class nfs::client::wwwlogs for sc16lw01.mgd.sf.priv at /etc/puppet/modules/logrotation/manifests/logrotation_apache.pp:5 on node sc16lw01.mgd.sf.priv
+warning: Not using cache on failed catalog
+err: Could not retrieve catalog; skipping run
+
+pc8lp01-monitoring.plateau.com
+
+Ambalipura, Sarjapura Road , Bangalore
+
+:\\ASHRDP001\Users\C5220633\Desktop\Repos\DC8-SALES (file://ashrdp001/Users/C5220633/Desktop/Repos/DC8-SALES))
+
+PS8LP04_MONITORING  SALES001
+PS8LP14_MONITORING/D45gT6yH@SALES001
+
+PS8LP01_MONITORING_TMS D45D45gT6yHgT6yH SALES001
+-MONITORING
+
+10.2.40.18 - DC2DLM01
+PS2LP01_SALES_MONITORING SALES01 D45gT6yH
+PS2LP02_SALES_MONITORING SALES01 D45gT6yH
+PS2LP03_SALES_MONITORING SALES01 D45gT6yH
+PS2LP07_SALES_MONITORING SALES01 D45gT6yH
+
+10.2.40.19 - DC2DLM02
+PS2LP04_SALES_MONITORING SALES01 D45gT6yH
+PS2LP05_SALES_MONITORING SALES01 D45gT6yH
+PS2LP06_SALES_MONITORING SALES01 D45gT6yH
+PS2LP08_SALES_MONITORING SALES01 D45gT6yH
+SAASOPS-11153
+
+PS2LP02_SALES_MONITORING SALES01 D45gT6yH
+
+8874482646
+
+================
+DC8-Jenkins
+-------------
+All the jenkins jobs are there as per standardization
+============
+DC15-Jenkins
+-------
+1)DB_Information_finder
+2)Language_Pack_Deployment_New
+3)Maint_Page
+4)Maintenance_Pop-UP_Notification
+5)Manage_TMS_and_Puppet
+6)Pingdom
+7)Post_DB_Upgrade_AdHocScript
+8)Single_Post_DB_Upgrade_AdHocScript
+
+DC16-Jenkins
+-------------
+1)DB_Information_finder
+2)Extension-Installer
+3)Maint_Page
+4)Maintenance_Pop-UP_Notification
+5)Post_DB_Upgrade_AdHocScript
+6)Single_Post_DB_Upgrade_AdHocScript 
+
+DC17-Jenkins
+--------------
+1)DB_Information_finder
+2)Extension-Installer
+3)GenerateManifests
+4)Language_Pack_Deployment_New
+5)Manage_TMS_and_Puppet 
+6)NewTenantDBInstall
+7)RunAutomation-New
+8)Run-Puppet-by-Class-New
+9)Single_Language_Pack_Deployment
+10)Single_Post_DB_Upgrade_AdHocScript
+11)SingleDBUpgrade
+
+This ticket will server as a reference for the DC17 jenkins Job
+
+Here is the list of  jobs which need to be configured in DC17 Jenkins
+To setup the jobs please refer  DC8 jenkins since all the above jobs are already configured in DC8
+
+ps2lp06u01.ams2.sf.priv,ps2lp06u03.ams2.sf.priv,ps2lp06b01.ams2.sf.priv,ps2lp06b02.ams2.sf.priv
+GOLDER_STAGE_TMS 
+
+b1502.15.0
+/nfs/shared/dba/cfdba/refresh/fts
+
+COSR-42395
+
+./build_all_fts.sh GOLDER_STAGE_TMS HcGUvpv89k
+
+4th main road.mytri place 
+
+
+
+saasoperations/Kwollk76dgd
+
+sqlplus cso123/cso123@DC16PLM1
+
+sqlplus saasoperations/saasoperations@DC16PLM1
+
+sqlplus saasoperations/Kwollk76dgd@DC16PLM1
+
+plateau.priv")
+      F5=10.24.243.30
+      ;;
+   "ash.sf.priv")
+      F5=10.8.248.10
+hg clone http://10.16.213.37/Automation/Automation-Configs
+
+hg clone http://10.16.213.37/Automation/Automation-Configs-YZ
+
+/bin/mkdir -p ${BUILD_ROOT}/RZ && cd ${BUILD_ROOT}/RZ
+
+pc17mgtdpl001.dc17.saas.sap.corp
+
+==========
+
+
+
+
+feature/extension_improvement
+
+
+Host: jenkins01.sha.sf.priv
+Datacenter: Shanghai
+IP Address: 10.15.198.52
+
+
+CR-7611,7612,7613
+
+# Automation properties for ::sc17lp01-test
+customer.[sc17lp01-test].name=DC17 sc17lp01-test Stage Dummy Tenant
+customer.[sc17lp01-test].tms.tsPrefix=TS01
+customer.[sc17lp01-test].financeId=
+customer.[sc17lp01-test].customerContact=
+customer.[sc17lp01-test].hostname.[sc17lp01-test.plateau.com].priority=1
+customer.[sc17lp01-test].hostname.[sc17lp01-test.plateau.com].ssl=true
+customer.[sc17lp01-test].hostname.[origin-sc17lp01-test.plateau.com].priority=2
+customer.[sc17lp01-test].hostname.[origin-sc17lp01-test.plateau.com].ssl=true
+customer.[sc17lp01-test].tms.tenantdbUser=SC17LP01_TEST
+customer.[sc17lp01-test].tms.tenantdbPassword={e932fa100c720de282bdb503c15210ee}
+======
+sc2lp08u01,10.2.31.64
+sc2lp08u02,10.2.31.65
+sc2lp08u03,10.2.31.66
+sc2lp08u04,10.2.31.67
+sc2lp08b01,10.2.31.68
+sc2lp08b02,10.2.31.69
+sc2lp08c01,10.2.31.70
+sc2lp08c02,10.2.31.71
+sc2lp08r01,10.2.31.72
+sc2lp08r02,10.2.31.73
+sc2lp09u01,10.2.31.74
+sc2lp09u02,10.2.31.75
+sc2lp09u03,10.2.31.76
+sc2lp09u04,10.2.31.77
+sc2lp09b01,10.2.31.78
+sc2lp09b02,10.2.31.79
+sc2lp09c01,10.2.31.80
+sc2lp09c02,10.2.31.81
+sc2lp09r01,10.2.31.82
+sc2lp09r02,10.2.31.83
+
+===========
+sc10lp04u01,10.10.31.71
+sc10lp04u02,10.10.31.72
+sc10lp04u03,10.10.31.73
+sc10lp04u04,10.10.31.74
+sc10lp04b01,10.10.31.75
+sc10lp04b02,10.10.31.76
+sc10lp04c01,10.10.31.77
+sc10lp04c02,10.10.31.78
+sc10lp04r01,10.10.31.79
+sc10lp04r02,10.10.31.80
+
+puppet agent -t --server dc4ppm001.phx.sf.priv
+
+SC10LP04_STAGE_BOOT/PBPyVIPbMz@DC10PLM1
+
+rm -f /var/lib/puppet/ssl/certs/sc10lp04c02.syd.sf.priv.pem
+
+1)sc10lp04-monitoring.plateau.com
+2)sc10lp04-test.plateau.com
+
+
+puppet agent -t --configtimeout 600 --server dc4ppm001.phx.sf.priv
+apache2ctl -t; service apache2 restart
+puppet agent -t --configtimeout 600 --server dc15mgtspm001.sha.sf.priv
+DTHNEW
+
+SC15LP03_STAGE_BOOT/HKberkxHNo@DC15PLM2
+
+c2464929862e1027fc3e2e58b6a79467
+
+7487c9ff3c9e1fd1a69f02df793a0f8d
+
+SC15LP03_MONITORING_TMS/rE_odOI#cc@DC15PLM2
+10.15.24.170   
+
+pc10lp02u01.syd.sf.priv	10.10.30.130	Sydney
+pc10lp02u02.syd.sf.priv	10.10.30.131	Sydney
+pc10lp02u03.syd.sf.priv	10.10.30.195  
+
+
+https://pd4lp01-test.plateau.com/learning/services/LearningIntegration
+
+https://dc4lmsqcap01.plateau.com/learning/saml/SSO  https://dc4lmsqcap01.plateau.com/learning/saml/SingleLogout
+
+https://pd4lp01-test.plateau.com/learning/saml/SSO  https://pd4lp01-test.plateau.com/learning/saml/SingleLogout
+
+sqlplus PD4LP01_BOOT/reWaivrZgH@DC4PLM01
+
+sqlplus PD4LP01_TEST/EZbieqEDYs@DC4PLM01
+
+
+Hi Animesh,
+The requested VIP has been created with the IP address 64.95.110.62. 
+V_PD4_PLATEAU.COM-443
+P_PD4LW01_PHX_SF_PRIV-80
+10.4.21.132:80
+10.4.21.133:80
+10.4.21.134:80
+10.4.21.135:80
+10.4.21.136:80
+10.4.21.137:80
+10.4.21.138:80
+10.4.21.139:80
+10.4.21.140:80
+10.4.21.141:80
+10.4.21.142:80
+10.4.21.143:80
+V_PD4_PLATEAU.COM-80
+P_PD4LW01_PHX_SF_PRIV-80
+10.4.21.132:80
+10.4.21.133:80
+10.4.21.134:80
+10.4.21.135:80
+10.4.21.136:80
+10.4.21.137:80
+10.4.21.138:80
+10.4.21.139:80
+10.4.21.140:80
+10.4.21.141:80
+10.4.21.142:80
+10.4.21.143:80
+
+58684334
+
+standardization
+A26RvC!UQ@z
+
+
+[8:00:11 PM] ANKIT SINGH: https://sftp15.sapsf.cn/webclient/WebClient.jsf
+[8:00:56 PM] ANKIT SINGH: cfactory
+[8:01:12 PM] ANKIT SINGH: 0IX0hbTa
+
+dc15sftp01 (SFTP) sles11_64Guest  10.15.198.64
+
+PROJOPS-8381
+
+https://pd4lp01qmt01.plateau.com/learning/admin/nativelogin.jsp
+https://pd4lp01qmt02.plateau.com/learning/admin/nativelogin.jsp
+
+64.95.110.62- external vip ip for dc4 DR customers
+
+1)pd4lp01qmt01.plateau.com
+origin-pd4lp01qmt01.plateau.com
+
+2)pd4lp01qmt02.plateau.com
+origin-pd4lp01qmt02.plateau.com
+
+
+pd4lp01qmt02 CompanySettings_pd4lp01t3.csv
+
+Apichecksum = 2f89790b1e916a0b89550ca97ed48cce8397e403fe7d205afbd6c01afb183fe64f8e23098d3f2ba4
+COSR-48874
+COSR-48961
+
+CompanySettings_pd4lp01t3.csv
+
+Company - pd4lp01qmt02.cubetree.biz
+users - ptest,pd4lp01qmt02test
+
+UserDirectory_pd4lp01qmt02.csv
+
+UserDirectory_sc8lqap01test.csv
+
+
+sftp012.successfactors.eu:22
+cubetree
+VC?JFS89
+
+JAM Settings
+============
+https://jam4.sapjam.com/saml/saml2_acs
+
+https://jam4.sapjam.com/saml/saml2_acs
+https://jam4.sapjam.com/saml/saml2_sls
+
+WFA Settings
+==============
+https://analytics4.successfactors.com/Production/Login.aspx
+
+https://analytics4.successfactors.com/Production/HrmlLogout.aspx
+
+https://analytics4.successfactors.com/ProductionData/ODataService.svc/
+
+http://sc17wfadbapp01/HrmlSSOSFServices/api/orgCreation
+
+http://dc4wfadbapp01/HrmlSSOSFServices/api/orgCreation
+
+http://dc4wfadbapp01/HrmlSSOSFServices/
+
+HIGH5
+
+RECH100
+
+COSR-50011
+==============
+SPRINT 17
+==============
+SCO-3937
+
+Integration configuration setup and testing - JAM -DC17 and Dc18 prod
+
+Integration configuration setup and testing - WFA -DC17 and Dc18 prod
+Build I-content in DC10 - move IIS servers to apache
+
+DNS names instead of IP addresses - search and create change plan
+
+pc17lp01t1
+
+CompanySettings_pc17lp01t1.csv
+
+UserDirectory_pc15lp02test.csv
+
+sftp://jamhcm17:zyC5PtEah87@sftp17.sapsf.com/outgoing/UserDirectory_pc17lp01t1.csv
+
+sftp://jamhcm18:FFz1qkDAUiriW@sftp18.sapsf.com/outgoing/UserDirectory_.csv
+
+
+AZ sales Demo -10.4.30.123
+AZ sales Demo-akamai - 
+
+sessionmanagement18.sapsf.com
+
+https://hcm18.sapsf.com
+
+https://api17.sapsf.com https://api18.sapsf.com
+
+https://hcm17.sapsf.com/idp/samlmetadata?company=pc17lp01t1  https://hcm18.sapsf.com/idp/samlmetadata?company=pc18lp01t1
+
+https://sessionmanagement17.sapsf.com  https://sessionmanagement18.sapsf.com
+
+https://pc18lp01-test.lms.sapsf.com/learning/saml/SSO  https://pc18lp01-test.lms.sapsf.com/learning/saml/SingleLogout
+
+https://jam18.sapjam.com/saml/saml2_acs  https://jam18.sapjam.com/saml/saml2_sls
+
+https://analytics18.sapsf.com/Production/Login.aspx https://analytics18.sapsf.com/Production/HrmlLogout.aspx
+
+pc10lwicont01 / 10.10.20.127
+ pc10lwicont02 / 10.10.20.128
+ 
+ pc10licont01.syd.sf.priv / 10.10.20.125
+ pc10licont02.syd.sf.priv / 10.10.20.126 
+ 
+Existing DC10 ISS server & volume Detail
+1)10.10.20.31(Windows)
+2)10.10.20.32(Windows)
+
+Volume Detail
+============
+\\10.10.2.18\vol1_icontent_prd_01\ 
+\\10.10.2.19\vol1_icontent_prd_02\
+
+http://jira.successfactors.com/browse/PROJOPS-9164 - For Linux volume for dc10 icontent
+
+New Server 
+10.10.20.125(Linux)
+10.10.20.126(Linux)
+Need the NFS mount for the above volumes on the new server.
+
+Created below VIPs in DC10 LB and external VIP is allowed in external our firewall to access it from open internet.
+origin-syd-icontent.plateau.com --> 210.80.140.50
+dc10licont.syd.sf.priv --> 10.10.248.205
+
+ https://jam15.sapsf.cn/saml/saml2_acs
+
+ https://pc15lmsqcp01-test.lms.sapsf.cn/learning/
+ 
+SPRINT 18
+===========
+pd4content-pxy01	10.4.21.148 
+pd4content-pxy02	10.4.21.149
+
+pd4content01 10.4.21.157
+pd4content02 10.4.21.158
+pd4content03 10.4.21.159 
+pd4content04 10.4.21.160
+
+
+10.4.21.132 
+10.4.21.133 
+10.4.21.134 
+10.4.21.135 
+10.4.21.136 
+10.4.21.137 
+10.4.21.138 
+10.4.21.139
+10.4.21.140
+10.4.21.141 
+10.4.21.142 
+10.4.21.143 
+
+PD4_SVC_IcontentIIS
+
+http://jira.successfactors.com/browse/COSR-53169
+
+
+
+Create incident 1005635013 succeed.
+
+COSR-53165
+Please creat vips in DC4 for Icontent setup for DR project
+
+Below VIPs have been created in DC4 load balancer. For DNS entry creation, please contact system (infra) team.
+origin-pd4-icontent.plateau.com --> 64.95.110.33
+pd4licontent.phx.sf.priv --> 10.4.10.246
+
+COSR-53423
+Please creat vips in DC4 for Entitlement setup(icontent) for DR project
+
+Below VIPs have been created in DC4 load balancer. For DNS entry creation, please contact system (infra) team.
+icpd4-entitlement.plateau.com --> 64.95.110.34
+pd4lentitle.phx.sf.priv --> 10.4.10.247
+
+ppmca001.phx.sf.priv
+
+ENT_DB_JDBC_URL="jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=ON)(ADDRESS=(PROTOCOL=TCP)(HOST=dc8orapc1n5.ash.sf.priv)(PORT=1521))(CONNECT_DATA=(SERVICE
+_NAME=DC8PLM01)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=180)(DELAY=5))))"
+
+connectionStringOverride=jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=dc8orapc3.ash.sf.priv)(PORT=1521))(FAILOVER=off)(LOAD_BALANCE=off)(
+CONNECT_DATA=(SERVICE_NAME=DC8PLM02)))
+
+
+sftp://cubetree
+VC%3FJFS89
+sftp012.successfactors.eu/export/UserDirectory_.csv
+
+UserDirectory_sc12lp07test.csv
+
+sftp://jamhcm12preview
+7r6DDFal
+sftp012.successfactors.eu/outgoing/UserDirectory_.csv
+
+UserDirectory_dc12lmsscp03T.csv
+
+sftp://jamhcm12preview:7r6DDFal@sftp012.successfactors.eu/export/UserDirectory_dc12lmsscp02T.csv
+============Integeration details for any tenants======
+
+https://sc12lp04-montest.plateau.com
+
+https://sc12lp04-montest.plateau.com/learning/
+
+https://api12preview.sapsf.com
+
+
+https://dc12lmsscp01-test.plateau.com/learning/saml/SSO  https://dc12lmsscp01-test.plateau.com/learning/saml/SingleLogout
+
+htps://sc12lp01-montest.plateau.com/learning/saml/SSO    htps://sc12lp01-montest.plateau.com/learning/saml/SingleLogout
+
+https://analytics12preview.sapsf.eu/Production/Login.aspx  https://analytics12preview.sapsf.eu/Production/HrmlLogout.aspx
+
+https://jam12.sapjam.com/saml/saml2_acs  https://jam12.sapjam.com/saml/saml2_sls
+
+https://jam12.sapjam.com/saml/saml2_acs
+
+https://analytics12preview.sapsf.eu/Production/Login.aspx
+
+https://analytics12preview.sapsf.eu/ProductionData/ODataService.svc/
+
+http://sc12wfadbapp01/HrmlSSOSFServices/api/orgCreation
+
+http://sc12wfadbapp01/HrmlSSOSFServices/
+
+SFAPI https://api12preview.sapsf.eu
+Session Management http://sessionmanagement-int.sapsf.com
+Provisioning URL https://hcm12preview.sapsf.eu
+
+================
+10.8.2.31:/vol1_icontent_prd_01/p_icontent01_q/dc8_cisco   10G  1.1G  9.0G  11% /nfs/icontent (volume for iclp)
+10.8.2.31:/vol1_ic_ofbiz_01                 475G  110G  366G  23% /nfs/ofbiz_upload            (volume for ofbiz)
+
+
+=========
+Built the peak season provision pool in DC10 stage.
+
+1) Setup the new pool and and add the nodes to the pool.
+
+2) Make the application up on all the nodes added in the pool(java process is running) .
+
+3) Make sure the VIP has been created for the  pool and all the user nodes has been added.
+
+4) Setup a test & monitoring tenant in the pool .
+
+5)Integrate the test tenant and make sure all the integration is working for test tenant
+
+dc4orapc2n1.phx.sf.priv
+DC4PLM01
+ENT_DB_USER=ICES
+ENT_DB_PWD=columbia
+
+]]]]]]]]]]]]]]]]]]]]]]]]]]
+
+Sprint 18
+SCO-5519,
+
+DR api api4dr.sapsf.com
+
+DR session mgt IP 10.4.10.200
+
+C5173514
+
+Naga Prashanth S	C5206195
+
+http://confluence.successfactors.com/display/IMPM/iContent+Migration+Test+Cases
+
+http://10.4.30.174:8080/iclp/about_me.jsp
+
+http://10.4.30.174:8080/proxlet/CrossDomainProxlet
+
+On ofbiz server following cmd need to run.
+
+1)groupadd oinstall
+2)useradd oracle
+3)zypper install oracle-psl-11.2.0
+
+[‎11/‎19/‎2015 4:05 PM] Kushwaha, Subodh (external - Project): 
+hiii
+/SFTP_Home/iContent Team/G/icontent-custom/<Customer_ID>/self-managed/
+
+\\10.20.254.246\teamcontent2_h_q\icontent_unentitled
+
+\\10.20.254.246\teamcontent2_h_q\icontent  
+
+
+1)ofbiz_old072013
+2)ofbiz_converted_prod
+3)ofbiz_converted_olap_prod
+
+sqlplus PD4LQAP01_TEST/rXwCOFxwTY@DC4PLM01
+
+===========
+SPRINT 20
+===========
+
+All CRs
+
+ 
+COSR-54601 -DC2 API VIP
+COSR-54600 -DC10 API VIP
+COSR-54597 -DC8 API VIP
+COSR-55399 - DC12 API VIP
+COSR-55127
+PROJOPS-9532
+PROJOPS-9500
+
+Created CR for API implementation
+CR-9983 - for DC8
+CR-9984 - for DC10
+CR-9986 - dc2 & dc12
+
+COSR-56290- created for adding stage web nodes in DC10 
+
+COSR-56275 - created for importing the Dump for dc8 ofbiz to DC4 dr ofbiz
+
+10.240.13.83:/vol1_automation /automation nfs ro,rsize=32768,wsize=32768,intr,_netdev 0 0
+10.240.13.83:/vol1_automation /automation nfs ro,rsize=32768,wsize=32768,intr,_netdev 0 0
+10.240.13.83:/vol1_automation /automation nfs ro,rsize=32768,wsize=32768,intr,_netdev 0 0
+
+LMSDC18BIZX2
+baseURL=https://hcm18.sapsf.com
+baseRESTAPIURL=https://api18.sapsf.com
+sessionmanagement18.sapsf.com
+
+
+Host: pc15lp01u01.sha.sf.priv
+Datacenter: Shanghai
+IP Address: 10.15.24.33
+
+
+Login to application as a hosting account and change url to /learning/OData.The request should go to the API nodes
+
+DC2 - pc2lp08 - 14 nodes 
+
+DC10 - pc10lp03 - 14 nodes 
+
+DC12 gmp - pc12lp07 - 14 nodes 
+9035929903- mallesh
+
+
+dc17boomistage01
+Toronto DC1 | Monsoon SaaS Prod Application
+Suse 11.3	2.2.1091 	16 CPUs, 63.3 GB
+(hana_16_64)
+10.170.148.83
+mo-1956b9f40
+Idle
+
+
+Instance	Name	Description	Device	Capacity	Attached	State	Type	
+dc17boomistage01
+dc17boomistage01
+dc17boomistage01-saas01
+vol-c7abb8e7
+-
+Toronto DC1
+saas01	140 GB	Attached	Available	vmdk
+
+10.10.248.165     pc10lp01api.syd.sf.priv
+10.10.248.166     pc10lp03api.syd.sf.priv
+
+pc10lp03u07.syd.sf.priv 10.10.31.109 8080
+pc10lp03u08.syd.sf.priv 10.10.31.110 8080
+
+9946 
+
+pc17lp02r02!!! pc17lp02u02!!! pc17lp02b02
+
+pc12lp01u07,pc12lp01u08,pc12lp02u07,pc12lp02u08,pc12lp03u07,pc12lp03u08,pc12lp05u07,pc12lp05u08
+
+pcappp02u07,pcappp02u08,pcappp05u07,pcappp05u08
+
+pcappp06u04,pcappp06u05
+
+puppet agent -t --server=dc12mgtppm01.rot.od.sap.biz
+
+=========
+#!/bin/sh
+
+TMS_HOME=/local/customers/plateau/plateau-talent-management-b1511.5.0
+
+if [ -d ${TMS_HOME}/bin ]; then
+  JAVA_HOME=/local/opt/sapjvm_7/jre
+  export JAVA_HOME
+
+  cd ${TMS_HOME}/bin
+  ./stop-plateau-talent-management.sh
+fi
+
+==========
+
+
+pc8lp03u07,pc8lp03u08,
+,pc8lp07u07,pc8lp07u08
+,pc8lp10u07,pc8lp10u08,pc8lp11u07,pc8lp11u08,pc8lp13u07,pc8lp13u08,pc8lp14u07,pc8lp14u08,pc8lp15u07,pc8lp15u08,
+pc8lp16u07,pc8lp16u08,pc8lp17u07,pc8lp17u08,pc8lp18u07,pc8lp18u08,
+pc8lp19u07,pc8lp19u08,pc8lp20u07,pc8lp20u08,pc8lp28u07,pc8lp28u08
+
+ulimit -n 65530; service apache2 restart
+
+puppet agent -t --configtimeout 600 --server=ppm004.ash.sf.priv
+
+puppet agent -t --configtimeout 600 --server=ppm001.ams2.sf.priv
+
+2015-12-12T04:25:06,769 [INFO ] {} [#init, #initSpring] http-nio-8080-exec-3 - pc8lp13-test - starting - SuccessFactorsHTTPMetadataProvider -
+ URL being used is:https://performancemanager8.successfactors.com/idp/samlmetadata?company=pc8lp13test
+ 
+ http://10.4.10.200
+ 
+ Entitlement Web Servers Setup
+ https://sfcloud.plateau.priv/templates/33
+ 
+ 	icpd4-entitlement.plateau.com 
+ https://icpd4-entitlement.plateau.com/hostname.html
+ 
+ https://icpd4-entitlement.plateau.com/session/about_me.jsp
+ 
+http://10.4.30.174:8080/proxlet/CrossDomainProxlet
+
+http://10.4.30.174:8080/iclp/about_me.jsp 
+
+/local/customers/plateau/work_PRODCOLO/BCKO
+
+ http://10.4.30.176:8088/backoffice
+ 
+ http://10.4.30.177:8080/
+
+=============
+Sprint 22
+=============
+
+
+https://jira.successfactors.com/browse/COSR-58628 - DC8 sales Internal VIP request
+
+https://ashbig0001.plateau.priv/tmui/login.jsp
+
+I-Rule:-
+I_SALES_LMS
+I_SALES_LMS_DUMMY_TENANT
+
+ V_SALES_ALLAPPPOOLS_PLATEAU_PRIV - 10.20.16.15- Virtula VIP
+Resource:-
+X-Forward-proto
+I_SALES_LMS
+I_SALES_LMS_DUMMY_TENANT
+
+P_SALES_PS8LP07_PLATEAU_PRIV-8080 - Pool VIP 
+
+P_SALES_PS8LP03_PLATEAU_PRIV-8080 - Pool VIP
+
+65.221.12.153 -- pmsalesdemo8.successfactors.com
+
+V_PRD_PC8LP01_ASH_SF_PRIV-8080
+
+
+PS8LP01_BOOT/ght458sd@DC8PLM13
+PS8LP01_MONITORING -D45gT6yH
+PS8LP01_TEST -D45gT6yH
+
+)
+
+
+hg clone https://repos.plateau.priv/Automation/Automation-Configs -b DC8-Sales on deployer server.
+
+
+
+ V_PRD_PLATEAU_COM-80 
+ R_HTTP_REDIRECT_TO_HTTPS 
+ P_PRD_DC8LMSWEBPC01_ASH_SF_PRIV-80 
+ 
+ 
+  V_PRD_PLATEAU_COM-443 
+ R_X-FORWARDED-PROTO_INSERT_HEADER 
+ P_PRD_DC8LMSWEBPC01_ASH_SF_PRIV-80 
+ 
+ 
+ Name for external vip for dc8 sales demo
+ V_SCDEMO_SUCCESSFACTORS_COM-443
+ 
+ https://jira.successfactors.com/browse/COSR-59044 - for pool vip sales web server
+ 
+ COSR-58054
+ 
+ COSR-58965
+ 
+ ==========
+ SPRINT 23
+ ==========
+ 
+sc8lp36u01	10.8.80.219	 
+sc8lp36u02	10.8.80.220	 
+sc8lp36u03	10.8.80.221 
+sc8lp36u04	10.8.80.222
+
+
+V_STG_SC8LP40_ASH_SF_PRIV-8080 --> 10.8.248.40  Lowes-Test
+V_STG_SC8LP39_ASH_SF_PRIV-8080 --> 10.8.248.41 Lowes-Stage
+
+V_STG_SC8LP36_ASH_SF_PRIV-8080 --> 10.8.248.42 peak season provisioning dc8 stage
+V_PRD_PC8LP32_ASH_SF_PRIV-8080 --> 10.8.248.46 Peak season provisioning dc8
+
+V_STG_SC8LP42_ASH_SF_PRIV-8080 --> 10.8.248.37  Zions - stage
+V_STG_SC8LP37_ASH_SF_PRIV-8080 --> 10.8.248.38  BOA-Test
+V_STG_SC8LP38_ASH_SF_PRIV-8080 --> 10.8.248.39  BOA-Stage
+V_STG_SC8LP40_ASH_SF_PRIV-8080 --> 10.8.248.40  Lowes-Test
+V_STG_SC8LP39_ASH_SF_PRIV-8080 --> 10.8.248.41 Lowes-Stage
+
+
+V_STG_SC8LP36_ASH_SF_PRIV-8080 --> 10.8.248.42
+V_PRD_PC8LP37_ASH_SF_PRIV-8080 --> 10.8.248.43
+V_PRD_PC8LP38_ASH_SF_PRIV-8080 --> 10.8.248.44
+V_PRD_PC8LP34_ASH_SF_PRIV-8080 --> 10.8.248.45
+V_PRD_PC8LP32_ASH_SF_PRIV-8080 --> 10.8.248.46
+
+SC8LP36_STAGE_BOOT/eJr2tElp@DC8SLM05
+
+SC8LP36_MONITORING/UYPjKhx#nU@DC8SLM05    TS01
+
+SC8LP36_TEST/ochYMJCxRz@
+
+PC8LP32_PROD_BOOT/Vsg51sSu@DC8PLM13  MIDMARKET 
+
+PC8LP32_TEST/ylQbbjjKEE
+
+PC8LP32_MONITORING/UYPjKhx#nU
+
+optier-lms-b1511.4.0
+
+
+CR-10427 - fedex-sbx migrtaion from juniper to cisco 
+
+
+SC8LP39_STAGE_BOOT/Ts70u47q DC8SLM05 TS01
+SC8LP40_STAGE_BOOT/Ts70u47q DC8SLM05 TS01
+
+SC8LP39_MONITORING UYPjKhx#nU 
+SC8LP39_TEST_TMS  SyZpUqhHnV
+
+SC8LP40_MONITORING UYPjKhx#nU
+SC8LP40_TEST_TMS  SyZpUqhHnV
+
+
+65.221.12.186
+
+Name:   sc8lp40-monitoring.plateau.com
+Address: 65.221.12.183
+
+
+sftp://jamhcm8preview:KqghhAfzZtMl@sftp8.successfactors.com/export/UserDirectory_.csv
+
+sftp://cubetree:oaoPWVhFX@sftp8.successfactors.com/export/UserDirectory_.csv
+
+
+https://analytics8.successfactors.com/Production/Login.aspx   https://analytics8.successfactors.com/Production/HrmlLogout.aspx
+
+
+P_PRD_DC8LMSWEBPC01_ASH_SF_PRIV-80
+
+
+PC8LP35_BOOT/e57Jsgnx@DC8PLM13 MIDMARKET
+
+PC8LP35_MONITORING/UYPjKhx#nU 
+
+PC8LP35_TEST_TMS/SfuztdrsYv
+
+10.8.2.12:/vol/vol1_COM_customer_ext_01     100G  2.8G   98G   3% /nfs/saasops/lms_extensions
+10.8.2.11:/vol/vol1_LMS_Doclibrary_01/RZ    500G  209M  500G   1% /nfs/applications/learning/quickguides
+
+
+mo-18cb211e8.dc17.saas.sap.corp,mo-deb243ed5.dc17.saas.sap.corp
+mo-7eb107056
+
+QAPATCHPREVIEW
+
+sqlplus QM13LSWP01_MONITORING/QmicfdNlqA@DC13LMQ1
+
+sqlplus QM13LSWP01_TEST/QmicfdNlqA@DC13LMQ1
+
+UPDATE PA_APP_ADMIN SET DATA_FLD_1='UTC', DATA_FLD_2='N' WHERE APP_ADMIN_ID='DB_TIMEZONE';
+
+sqlplus QM13SWP01T01PT2S7/QmicfdNlqA@DC13LMQ1
+sqlplus QM13SWP01T02PT2S4/QmicfdNlqA@DC13LMQ1
+sqlplus QM13SWP01T03PT2S5/QmicfdNlqA@DC13LMQ1
+sqlplus QM13SWP01T04PT2S5/QmicfdNlqA@DC13LMQ1
+sqlplus QM13SWP01T05PT2S5/QmicfdNlqA@DC13LMQ1
+sqlplus QM13SWP01T06PT2S5/QmicfdNlqA@DC13LMQ1
+sqlplus QM13SWP01T07PT2S7/QmicfdNlqA@DC13LMQ1
+sqlplus QM13SWP01T08PT4S6/QmicfdNlqA@DC13LMQ1
+
+
+mo-2650362ef.lab-rot.saas.sap.corp
+
+QM13LSWP01_QC_BOOT/QmicfdNlqA
+
++91 93-35-520880
+
+10.116.37.8
+
+qa13lw03 already exist as ip-155-56-223-180
+
+155.56.223.180
+
+Need to verify zabbix, splunk and sitescope
+Certification is pending 
+
+
+/usr/share/apache2/find_mpm
+
+
+PC8LP37_TEST_TMS/SyZpUqhHnV
+PC8LP37_MONITORING/UYPjKhx#nU
+
+
+
+[‎27-‎02-‎2016 12:26] Patra, Sudip (external - Service): 
+DL Cloud Infra L2 Network (External) <DL_53199A44DF15DB7B6B00A9A7@exchange.sap.corp> 
+[‎27-‎02-‎2016 12:36] Patra, Sudip (external - Service): 
+Network On-call number +91-9611577299 
+
+
+DRG-10599:coloum is not indexed
+
+COSR-64928
+
+
+QM8SWP01T01PT2S7           QM13SWP01T01PT2S7
+QM8SWP01T02PT2S4           QM13SWP01T02PT2S4
+QM8SWP01T03PT2S5           QM13SWP01T03PT2S5
+QM8SWP01T04PT2S5           QM13SWP01T04PT2S5
+QM8SWP01T05PT2S5           QM13SWP01T05PT2S5
+QM8SWP01T06PT2S5           QM13SWP01T06PT2S5
+QM8SWP01T07PT2S7           QM13SWP01T07PT2S7
+QM8SWP01T08PT4S6           QM13SWP01T08PT4S6
+
+
+QM13LSWP01_MONITORING
+QM13LSWP01_TEST
+155.56.223.215
+
+
+
+QM13LSWP01_QCM_TMS
+
+Company Name      ENV
+qm13lswp01qcm    QAPATCHPREVIEW
+
+http://jira.successfactors.com/browse/PROJOPS-10847
+
+http://jira.successfactors.com/browse/PROJOPS-10848
+
+QM13LSWP01_QCM_TMS
+QM13LSWP01_QCM_TMS/QmicfdNlqA@dc13qacandcrs2.lab.od.sap.biz/DC13LMQ1
+
+QM13SWP01T04PT2S5/QmicfdNlqA TS01 @dc13qacandcrs2.lab.od.sap.biz/DC13LMQ1
+
+QM13SWP01T04PT2S5/QmicfdNlqA@DC13LMQ1
+
+QM13SWP01T08PT4S6/QmicfdNlqA@DC13LMQ1
+
+TMS b1511.12.0     QmicfdNlqA    database
+
+http://yum.lab-rot.saas.sap.corp/hcm/lms/yum/SLES/11.3/app/qc/lms/
+
+155.56.220.163
+sftp dc13-qa@sftp013.successfactors.eu 
+dc13-qa / kBGMUHBcS9
+
+
+
+https://stage.sapjam.com/saml/saml2_acs https://stage.sapjam.com/saml/saml2_sls
+
+https://qm13lswp01-test.lab-rot.ondemand.com/learning/saml/SSO  https://qm13lswp01-test.lab-rot.ondemand.com/learning/saml/SingleLogout
+
+
+baseURL=https://qapatchpreview.sflab.ondemand.com
+
+baseRESTAPIURL=https://sfapiqapatchpreview.sflab.ondemand.com
+
+successFactorsCompanyID=CDC03 for t4
+
+https://qapatchpreview.sflab.ondemand.com/idp/samlmetadata?company=CDC03
+
+sessionMgmtServiceURL=https://smsqapatchpreview.sflab.ondemand.com
+
+LRNqm13lms001
+
+
+
+
+QAPATCHPREVIEW
+
+
+===============
+10.24.244.252:/vol/vol1_customer_ext_01
+                      200G  967M  200G   1% /nfs/saasops/lms_extensions
+10.24.244.252:/vol/vol1_app_log_01
+                      100G   33G   68G  33% /nfs/applogs1
+/nfs/saasops/lms_extensions/qm8lswp01
+                      200G  967M  200G   1% /local/customers/plateau/.tms/modules
+10.24.244.249:/vol1_LMS_Doclibrary_02/YZ
+                      250G  572M  250G   1% /nfs/applications/learning/quickguides
+[root@qm8lswp01u01 qmstdwkp01t04]#
+
+===============
+
+10.116.37.12 web node 1
+
+
+
+CREATE OR REPLACE SYNONYM "QM13LSWP01_QCM_TMS"."PS_I18N_BASE_LABEL_VALUE" FOR "QM13LSWP01_QC_BOOT"."PS_I18N_BASE_LABEL_VALUE";
+
+
+http://yum.lab-rot.saas.sap.corp/hcm/lms/yum/SLES/11.3/app/qc/lms/foundation-psl-b1602.4.0-b1602.4.0-201603020928.x86_64.rpm
+
+mo-d1e47b30e.lab-rot.saas.sap.corp
+
+
+Getting monsoon nodename mapping from chef server using tags
+ Updating qm13lswp01u01 (mo-d677d16e1.lab-rot.saas.sap.corp)
+Updating qm13lswp01u02 (mo-82c48165d.lab-rot.saas.sap.corp)
+Updating qm13lswp01b01 (mo-743abf267.lab-rot.saas.sap.corp)
+Updating qm13lswp01b02 (mo-503fe4de3.lab-rot.saas.sap.corp)
+Updating qm13lswp01c01 (mo-d1e47b30e.lab-rot.saas.sap.corp)
+Updating qm13lswp01c02 (mo-bb0112fe8.lab-rot.saas.sap.corp)
+Updating qm13lswp01r01 (mo-a39794155.lab-rot.saas.sap.corp)
+Updating qm13lswp01r02 (mo-5e9bbf928.lab-rot.saas.sap.corp)
+
+
+Source -> QM8SWP01T03PT2S5
+
+Target - >QM13SWP01T03PT2S5
+
+
+2016-03-09T16:22:19,930 [ERROR] {} [] main - OracleDatabase - Error Occured while validation DB TimezoneORA-20115: validate_db_timezone: DBServer Timezone [UTC] does not match app admin db timezone [EST5EDT]
+2016-03-09T16:22:19,930 [ERROR] {} [] main - OracleDatabase - Pre Check Condition Failed
+
+ update PS_TENANT set ACTIVE = 'N' where TENANT_ID = 'QM13SWP01T04PT2S5';
+ 
+ 
+ mo-9db0ee997
+ 
+ 
+QM13LAQP01_BOOT/QmicfdNlqA
+QM13LAQP01_MONITORING
+QM13LAQP01_TEST
+
+
+https://jira.successfactors.com/browse/COSR-65821 schema export ticket for t4 in QC
+
+qm13lswp01u03
+QM13LSWP01_QCM_TMS/QmicfdNlqA
+
+mo-4580b7d21
+
+QM13LP01_QC_BOOT/QmicfdNlqA
+QM13LP01_MONITORING_TMS/QmicfdNlqA
+QM13LP01_TEST1_TMS/QmicfdNlqA
+
+_QC_BOOT
+./dbCreate1508.sh BOOTSTRAP @dc13qacandcrs2.lab.od.sap.biz/DC13LMQ1 TS01 QM13LP01_QC_BOOT QmicfdNlqA
+
+pool.[qm13lp01].node.tms.customopts=-XX:+UseConcMarkSweepGC -XX:SurvivorRatio=3 -XX:+PrintGCDetails -Xmn1G -XX:+GCHistory -XX:GCHistoryFilename=/tmp/sapjvm_gc_@PID.pr -Xbootclasspath/a:/local/opt/sapjvm_7/lib/jvmx.jar:/local/opt/sapjvm_7/lib/jvmx_tools.jar -DenableUnifiedConnectionsWithSameBootstrapSchemaUser=true -DrtlSupportEnabled=true -DverifyTenantDBPackagesAndStopInitializationOnFailure=true -DenableUnifiedConnectionPoolingWatchDog=false
+pool.[qm13aqp01].node.tms.customopts=-XX:+UseConcMarkSweepGC -XX:SurvivorRatio=3 -XX:+PrintGCDetails -Xmn1G -XX:+GCHistory -XX:GCHistoryFilename=/tmp/sapjvm_gc_@PID.pr -Xbootclasspath/a:/local/opt/sapjvm_7/lib/jvmx.jar:/local/opt/sapjvm_7/lib/jvmx_tools.jar -DenableUnifiedConnectionsWithSameBootstrapSchemaUser=true -DrtlSupportEnabled=true -DverifyTenantDBPackagesAndStopInitializationOnFailure=true -DenableUnifiedConnectionPoolingWatchDog=false
+
+
+ASH_FEDEX_PROD1_BOOT/sH54Df1GfSD
+
+update PS_TENANT set ACTIVE = 'N' where TENANT_ID = 'FEDEX_PROD_TMS';
+
+update PS_TENANT set ACTIVE = 'N' where TENANT_ID ='fedex';
+
+PC8LP36_PROD_BOOT Ts70u47q DC8PLM11
+
+PC8LP36_PROD_BOOT/Ts70u47q MIDMARKET
+
+
+http://jira.successfactors.com/browse/COSR-67348 - for fedex node decommision
+
+I-content testing
+
+9885988725
+
+/odatav4/public
+
+===============
+Certify DC15-LMS Prod environment
+
+
+
+10.2.248.106 - V_PRD_AMS2PCAPPP02API_AMS2_SF_PRIV-8080
+
+
+ams2pcappp02api.ams2.sf.priv
+
+
+PC15QCMDUMP_PROD_TMS/WdMBMeEsES@DC15PLM2
+
+https://confluence.successfactors.com/display/RMDA/QAPATCHPREVIEW+Certification
+
+
+/learning/adhocreports/api
+
+
+2016-04-06T16:40:05,989 [ERROR] {JSESSION_ID=49A70F1F07EB8B96E9067D1EBE9B6593} [] http-nio-8080-exec-7 - qm13lp01-test - https://qm13lp01-test.lab-rot.ondemand.com/learning/adhocreports/api - error_005fgeneral_jsp - Ticket=2: HTTP error code 404: The page you requested does not exist: /adhocreports/api
+
+9839762943
+
+SAPdc15!#%&(@$^*)sap
+5Q9Nyb4Hn
+
+aJI#MnVnvs - dc15 stage cert tenat password
+
+extra_web_configs
+customer folder
+web.conf
+ProxyPass /learning/adhocreports/api http://ip-10-116-42-205.lab-rot.saas.sap.corp:8080/learning/adhocreports/api disablereuse=on retry=0
+
+qm13lp01-test.lab-rot.ondemand.com
+
+QACAND
+VIP dns name: ip-10-116-42-99.lab-rot.saas.sap.corp
+VIP dns name: ip-10-116-43-0.lab-rot.saas.sap.corp
+qm13lw01
+QAAUTOCAND
+qa13lw01 ip-155-56-223-160.lab-rot.saas.sap.corp
+
+ip-10-116-36-62.lab-rot.saas.sap.corp
+ip-10-116-43-50.lab-rot.saas.sap.corp
+ip-155-56-223-241.lab-rot.saas.sap.corp
+
+VIP dns name: ip-10-116-43-55.lab-rot.saas.sap.corp
+VIP dns name: ip-10-116-43-147.lab-rot.saas.sap.corp
+VIP dns name: ip-10-116-42-236.lab-rot.saas.sap.corp
+
+QAPATCH
+qm13lw03 ip-155-56-223-133.lab-rot.saas.sap.corp
+
+ip-10-116-38-9.lab-rot.saas.sap.corp
+
+VIP dns name: ip-10-116-43-214.lab-rot.saas.sap.corp
+
+QAPATCHPREVIEW
+qm13lw02 ip-155-56-223-215.lab-rot.saas.sap.corp
+
+ip-10-116-37-8.lab-rot.saas.sap.corp
+
+VIP dns name: ip-10-116-41-136.lab-rot.saas.sap.corp
+
+web.[qm13lw02].web.nodes=qm13lw02n01,qm13lw02n02 - issue in one of the node 02
+
+5)QAAUTOPATCH
+qa13lw03 ip-155-56-223-41.lab-rot.saas.sap.corp
+
+ip-10-116-41-78.lab-rot.saas.sap.corp
+
+VIP dns name: ip-10-116-43-218.lab-rot.saas.sap.corp
+
+6)QAAUTOPATCHPREVIEW
+qa13lw02 ip-155-56-223-237.lab-rot.saas.sap.corp
+
+ip-10-116-42-23.lab-rot.saas.sap.corp
+
+VIP dns name: ip-10-116-41-73.lab-rot.saas.sap.corp
+
+7)	QAANNUAL
+qa13lw04 ip-155-56-223-109.lab-rot.saas.sap.corp
+
+ip-10-116-36-246.lab-rot.saas.sap.corp
+ip-10-116-38-159.lab-rot.saas.sap.corp
+ip-10-116-43-110.lab-rot.saas.sap.corp
+ip-10-116-40-250.lab-rot.saas.sap.corp
+ip-10-116-43-124.lab-rot.saas.sap.corp
+ip-10-116-40-27.lab-rot.saas.sap.corp
+
+VIP dns name: ip-10-116-41-186.lab-rot.saas.sap.corp
+VIP dns name: ip-10-116-41-187.lab-rot.saas.sap.corp
+VIP dns name: ip-10-116-41-30.lab-rot.saas.sap.corp
+VIP dns name: ip-10-116-41-188.lab-rot.saas.sap.corp
+VIP dns name: ip-10-116-40-172.lab-rot.saas.sap.corp
+VIP dns name: ip-10-116-40-151.lab-rot.saas.sap.corp
+
+8)	DC13- PERFLOAD
+qp13lw01 ip-155-56-223-198.lab-rot.saas.sap.corp
+
+ip-10-116-43-84.lab-rot.saas.sap.corp
+
+VIP dns name: ip-10-116-42-205.lab-rot.saas.sap.corp
+
+9)HANA
+qc13lw01
+
+dc15mgtppmca.sha.sf.priv
+
+[‎15-‎04-‎2016 16:07] Yadav, Santosh (external - Project): 
+puppet agent -t --configtimeout 600 --server=dc15mgtspm001.sha.sf.priv 
+
+find /var/lib/puppet -type f -print0 |xargs -0r rm
+
+ca_server = dc15mgtppmca.sha.sf.priv
+
+Manual QC Team For SPRINT/FC/RC releases testing in DC13
+
+
+https://confluence.successfactors.com/display/RE/DC13-LMS-QACAND-DETAILS - HO conf link for QACAND
+
+http://dc15bizxsess01.sha.sf.priv:8080
+
+https://confluence.successfactors.com/display/RMDA/LMS+DC15+stage - dc15
+https://confluence.successfactors.com/display/RMDA/LMS+DC15+prod 
+
+
+Enable Generic Objects”, “Effective Dated Data Platform”, “Employee Profile data audit” and “Enable the Attachment Manager
+
+hrm@esqarehomes@gmail.com
+
+c5240436 - Asha
+
+
+=====================
+DC2 Sales                               
+----------
+Host: ps2lp04u01.ams2.sf.priv
+Datacenter: Amsterdam 2
+IP Address: 10.2.30.171
+
+Prod DC2
+-------
+Host: pcappp01u01.ams2.sf.priv
+Datacenter: Amsterdam 2
+IP Address: 10.2.77.10
+
+DC2 Stage
+---------
+Host: scappp01u01.ams2.sf.priv
+Datacenter: Amsterdam 2
+IP Address: 10.2.77.16
+
+Create a separate maintenance pool in Cisco	
+
+===============Sprint 31 ====================
+
+https://hosting-maintenance.plateau.com/plateau/maint.html
+
+http_pod5_yz_1
+https_pod5_yz_1
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} /(.*)$
+RewriteRule (.)* http://hosting-maintenance.plateau.com/schedmaintenance.html [R=301,L]
+
+
+https://10.24.244.115/customers/2070/instances/5094
+
+
+Initiate first request for sc8p11-test.plateau.com
+forwards you request to the web VIP -> 65.221.12.186
+request is then forwarded to the APP VIP
+
+from web layer it goes straight to maint page if there is a rewrite rule
+
+
+======
+long story short, there is a configuration specifically in Juniper (not in Cisco) in the firewall.
+it maps every external IP to internal IP.
+it is the only datacenter set up this way.  that is how are requests are being translated for the maint page :)
+=====
+you don’t need to set up anything in Cicso besides an external VIP
+there is no firewall problem in Cisco
+======
+c5173961@pc4lwicont01:~> nslookup hosting-maintenance.plateau.com
+Server:         10.4.196.15
+Address:        10.4.196.15#53
+
+Non-authoritative answer:
+Name:   hosting-maintenance.plateau.com
+Address: 65.221.8.41
+
+============
+
+c5173961@pc4lwicont01:~> nslookup ashlnxweb5maint.plateau.priv
+Server:         10.4.196.15
+Address:        10.4.196.15#53
+
+Name:   ashlnxweb5maint.plateau.priv
+Address: 10.20.65.20
+
+
+
+ http_pod5_yz_1
+http2https_redirect_rule
+ http_pod5_yz_1
+ 10.20.65.20:80
+ 
+  https_pod5_yz_1
+X-Forward-proto
+ http_pod5_yz_1
+ 10.20.65.20:80
+SslCookieSecure
+
+
+Vip http_pod5_yz_1 10.20.64.15
+
+
+V_LMS_MAINT_ASH_SF_PRIV-8080
+
+spc incident - 1007378999 for main page in Dc8 cisco
+
+Display ITdirect SR Ticket: 7002108075, Need the internal VIP in DC8 for maint
+
+10.8.35.199
+10.8.35.200
+
+V_LMS_MAINT - 10.8.248.220 internal VIP
+
+Internal DNS record 
+
+10.8.248.220   maintenance.ash.sf.priv
+
+https://206.112.73.55 
+external Vip..
+
+Display ITdirect SR Ticket: 7002115129, Need to configure a external VIP 
+
+=====================
+DC13_QC_Details_HandOver
+
+DC17_Details_HandOver
+
+
+origin-can-icontent.plateau.com
+
+baseURL=https://hcm17preview.sapsf.com
+
+baseRESTAPIURL=https://api17preview.sapsf.com
+
+https://sessionmanagement17preview.sapsf.com
+
+---------------sprint 32----------
+Servers are built: and details as below: 
+
+ps2lp01b04.ams2.sf.priv 10.2.31.166 
+ps2lp02b04.ams2.sf.priv 10.2.31.167 
+ps2lp03b04.ams2.sf.priv 10.2.31.168 
+ps2lp04b04.ams2.sf.priv 10.2.31.169 
+ps2lp05b04.ams2.sf.priv 10.2.31.170 
+ps2lp06b04.ams2.sf.priv 10.2.31.171 
+ps2lp07b04.ams2.sf.priv 10.2.31.172 
+ps2lp08b04.ams2.sf.priv 10.2.31.173
+
+PS2LP07_BOOT/ght458sd@DC2DLM01
+
+PS2LP04_BOOT/ght458sd@DC2DLM02
+
+PS2LP08_BOOT/ght458sd@DC2DLM02
+
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} /(.*)$
+RewriteRule (.)* http://cisco-maintenance.plateau.com/plateau/maint.html [R=301,L]
+
+
+
+Dc4 icontent server volume mount
+---------------------------------
+/vol/vol1_LMS_icontent_prd_02 -sec=sys,rw=10.4.21.234:10.4.21.235,root=10.4.21.234:10.4.21.235
+
+vol1_LMS_icontent_prd_01 (\\10.4.2.21)
+vol1_LMS_icontent_prd_02 (\\10.4.2.22)
+
+10.4.2.21:/vol/vol1_LMS_icontent_prd_01     /nfs/icontent    nfs     rsize=32768,wsize=32768,intr,_netdev    0       0
+
+10.4.2.22:/vol/vol1_LMS_icontent_prd_02     /nfs/icontent_e    nfs     rsize=32768,wsize=32768,intr,_netdev    0       0
+
+
+
+https://sc8lqap01-test.plateau.com/learning/admin/nativelogin.jsp
+
+sc8lw06:/tmp # wget https://sc8lqap01-test.plateau.com/learning/admin/nativelogin.jsp
+--2016-05-16 09:20:29--  https://sc8lqap01-test.plateau.com/learning/admin/nativelogin.jsp
+Resolving sc8lqap01-test.plateau.com... 104.119.116.83
+Connecting to sc8lqap01-test.plateau.com|104.119.116.83|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: http://cisco-maintenance.plateau.com/plateau/maint.html [following]
+--2016-05-16 09:20:30--  http://cisco-maintenance.plateau.com/plateau/maint.html
+Resolving cisco-maintenance.plateau.com... 206.112.73.55
+Connecting to cisco-maintenance.plateau.com|206.112.73.55|:80... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://cisco-maintenance.plateau.com/plateau/maint.html [following]
+--2016-05-16 09:20:30--  https://cisco-maintenance.plateau.com/plateau/maint.html
+Connecting to cisco-maintenance.plateau.com|206.112.73.55|:443... connected.
+ERROR: certificate common name `plateau.com' doesn't match requested host name `cisco-maintenance.plateau.com'.
+To connect to cisco-maintenance.plateau.com insecurely, use `--no-check-certificate'.
+Unable to establish SSL connection.
+
+http://10.117.224.159:8080/analytics/
+
+puppet agent -t --configtimeout 600 --server=ppmca001.ams2.sf.priv
+
+ssh -q -T -o "StrictHostKeyChecking no" sc8lp01u01.ash.sf.priv
+
+
+V_PRD_PC8LP25_ASH_SF_PRIV-8080 
+
+V_PRD_PC8LP30_ASH_SF_PRIV-8080
+
+sudo /sbin/service puppet status
+Checking for service puppetd:                                                                                                               running
+[deployer@sc8lp01u01 ~]$ echo $?
+
+
+18002084484
+
+52484
+
+TMS Running ps -ef |grep java|grep -v grep |wc -l 
+LMS Version facter sf_lms_ver 
+
+sco-10595
+sco-9615
+
+
+node.tms.heapsize=10240m
+pool.[sc8lp37].node.tms.permgen=2048m
+
+connectionPoolMinSize=0
+connectionPoolMaxSize=200
+
+pminc=cat /local/customers/plateau/.tms/PlateauDS.properties |grep "connectionPoolMinSize" |cut -f 2 -d "="
+pmaxc=cat /local/customers/plateau/.tms/PlateauDS.properties |grep "connectionPoolMaxSize" |cut -f 2 -d "="
+
+logrotate=sudo crontab -l |grep lms_logrotate.rb | grep -v "#" |wc -l
+
+C_Max,C_Min,M_Loop_S,P_H_Wt,P_L_Wt,P_Rep_Cap,P_Conn_Cap"
+
+mainLoopSchedule
+mainloops=cat /local/customers/plateau/.tms/JobExecutionService.properties |grep "mainLoopSchedule" |cut -f 2 -d "=" |cut -f 2 -d "/" |cut -f 1 -d " "
+pool.HeavyWeight.capacity
+p_heavy_cap=cat /local/customers/plateau/.tms/JobExecutionService.properties |grep "pool.HeavyWeight.capacity" |cut -f 2 -d "="
+pool.LightWeight.capacity
+p_light_cap=cat /local/customers/plateau/.tms/JobExecutionService.properties |grep "pool.LightWeight.capacity" |cut -f 2 -d "="
+
+pool.Report.capacity
+p_report_cap=cat /local/customers/plateau/.tms/JobExecutionService.properties |grep "pool.Report.capacity" |cut -f 2 -d "="
+pool.Connector.capacity
+p_conn_cap=cat /local/customers/plateau/.tms/JobExecutionService.properties |grep "pool.Connector.capacity" |cut -f 2 -d "="
+
+
++node.[pcappp01b01].tms.jobPoolScannerSchedule=jobPoolScannerSchedule=*/5 * * * * *
+
+
+jdk=facter sf_jdk_home
+
+DC12 preview, mount new volumes in all servers
+
+
+
+cp /nfs/shared/madhu.g.r/scdemo.successfactors.eu.conf /etc/apache2/customers
+cp /nfs/shared/madhu.g.r/scdemo.successfactors.eu.conf /etc/apache2/sites-enabled/
+cp /nfs/shared/madhu.g.r/lmsprovisioning2.scdemo.successfactors.eu.conf /etc/apache2/customers/
+cp /nfs/shared/madhu.g.r/lmsprovisioning2.scdemo.successfactors.eu.conf /etc/apache2/sites-enabled/
+
+mkdir -p /var/www/html/scdemo.successfactors.eu
+
+mkdir -p /var/www/html/lmsprovisioning2.scdemo.successfactors.eu
+
+
+
+mutt -s "dc10yz" santosh.yadav@sap.com < /tmp/message.txt -a /nfs/shared/Santosh/
+
+
+dc2 sales web IP - 213.52.186.243 V_SALES_PS8LWP01_AMS2_SF_PRIV-443
+
+
+DC8 Sales tenants are not integrated - Bizx url is not confirmed
+
+dc12lmsscp02T
+
+
+
+
+ /local/opt/sapjvm_7/jre/bin/java -version
+ 
+ java version "1.7.0_95"
+ jdk.version=7.1.040_sap
+Java(TM) SE Runtime Environment (build 7.1.040)
+SAP Java Server VM (build 7.1.040 25.51-b02, Feb  5 2016 12:12:36 - 71_REL - optU - linux amd64 - 6 - bas2:262829 (mixed mode))
+ 
+ DC13-HANA
+ qp13lapp01].name=DC13 Engineering Performance Pool
+ tms.version=b1605.0.0
+ nodes=qp13lapp01u01,qp13lapp01u02,qp13lapp01u03,qp13lapp01u04,qp13lapp01u05,qp13lapp01u06,qp13lapp01r01
+ 
+ 
+
+
+
+
+
+maintenance is scheduled for 00hrs to 07hrs of DC RTZ on 06/04/2016
+
+
+
+
+CR-13396 --> Completed in dc12 preview
+
+
+Host: pcappp03u01.ams2.sf.priv
+Datacenter: Amsterdam 2
+IP Address: 10.2.77.73
+
+
+
+
+
+
+[c5173961@pcappp03u01 ~]$ sudo su -
+[root@pcappp03u01 ~]# telnet api.coursera.org 443
+Trying 52.4.1.216...
+telnet: connect to address 52.4.1.216: Connection refused
+Trying 52.7.10.126...
+telnet: connect to address 52.7.10.126: Connection refused
+Trying 52.6.53.236...
+telnet: connect to address 52.6.53.236: Connection refused
+telnet: Unable to connect to remote host: Connection refused
+
+
+cookbook/lms/
+des_scis_lms_app
+
+
+
+
+
+
+
+sc17lp02u01 (mo-11c0b9ab3), sc17lp02u02 (mo-ca0810d40), sc17lp02u03 (mo-ef77b6f4b), sc17lp02u04 (mo-09565f8c5)
+Updating sc17lp02b01 (mo-140ef0c93.dc17.saas.sap.corp)
+Updating sc17lp02b02 (mo-01a692946.dc17.saas.sap.corp)
+Updating sc17lp02c01 (mo-69a09d20a.dc17.saas.sap.corp)
+Updating sc17lp02c02 (mo-1c90a7dc5.dc17.saas.sap.corp)
+Updating sc17lp02r01 (mo-ff3c7c3c2.dc17.saas.sap.corp)
+Updating sc17lp02r02 (mo-3e80aa8b5.dc17.saas.sap.corp)
+Updating sc17lp02u01 (mo-11c0b9ab3.dc17.saas.sap.corp)
+Updating sc17lp02u02 (mo-ca0810d40.dc17.saas.sap.corp)
+Updating sc17lp02u03 (mo-ef77b6f4b.dc17.saas.sap.corp)
+Updating sc17lp02u04 (mo-09565f8c5.dc17.saas.sap.corp)
+
+
+pc17lp02u01 (mo-21ba81b40), pc17lp02u03 (mo-16ba0b7b0), pc17lp02u04 (mo-530914b6e), pc17lp02u06 (mo-deb243ed5), pc17lp02u05 (mo-ae8ff2e5e), pc17lp02u02 (mo-0735d4fea)
+
+Updating pc17lp02b01 (mo-18cb211e8.dc17.saas.sap.corp)
+Updating pc17lp02b02 (mo-7eb107056.dc17.saas.sap.corp)
+Updating pc17lp02c01 (mo-fbc50f50e.dc17.saas.sap.corp)
+Updating pc17lp02c02 (mo-ba366d08a.dc17.saas.sap.corp)
+Updating pc17lp02r01 (mo-7c6302fbf.dc17.saas.sap.corp)
+Updating pc17lp02r02 (mo-da2a8384f.dc17.saas.sap.corp)
+Updating pc17lp02u01 (mo-21ba81b40.dc17.saas.sap.corp)
+Updating pc17lp02u02 (mo-0735d4fea.dc17.saas.sap.corp)
+Updating pc17lp02u03 (mo-16ba0b7b0.dc17.saas.sap.corp)
+Updating pc17lp02u04 (mo-e6d0543c9.dc17.saas.sap.corp)
+Updating pc17lp02u05 (mo-ae8ff2e5e.dc17.saas.sap.corp)
+Updating pc17lp02u06 (mo-deb243ed5.dc17.saas.sap.corp)
+
+=========sprint 35 ===========
+
+icontent in dc19 
+
+pc17icontent-pxy02  
+
+
+Type	2 CPUs, 4 GB (medium_2_4) 
+
+Security Groups	web
+
+Run List
+role[monsoon_saas_icontent_proxy]

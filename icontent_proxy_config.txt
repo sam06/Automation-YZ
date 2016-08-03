@@ -1,0 +1,59 @@
+<VirtualHost *:80>
+     ServerAdmin hosting@plateau.com
+     ServerName 0000defaultvhost.plateau.com
+     DocumentRoot "/srv/www/htdocs"
+
+SSLProxyEngine on
+
+###### ICONTENT ###########
+## Contact Greg Hawkins with Questions x202 ##
+
+#iContent Entitlement Specific  - GH
+# Prevent access to content outside iContent Entitlement
+RewriteEngine On
+RewriteCond %{HTTP_COOKIE} !AKAMAI_AUTH_COOKIE
+RewriteRule ^/icontent_e/(.*)$ - [F]
+
+#proxy rot specific to the rot iis server
+<Proxy balancer://icontent_CUSTOM_rot>
+BalancerMember http://10.118.76.32/icontent/CUSTOM_rot/ disablereuse=on keepalive=off retry=10
+BalancerMember http://10.118.76.33/icontent/CUSTOM_rot/ disablereuse=on keepalive=off retry=10
+
+</Proxy>
+<Proxy balancer://icontent_e_CUSTOM_rot>
+BalancerMember http://10.118.76.32/icontent_e/CUSTOM_rot/ disablereuse=on keepalive=off retry=10
+BalancerMember http://10.118.76.33/icontent_e/CUSTOM_rot/ disablereuse=on keepalive=off retry=10
+</Proxy>
+<Proxy balancer://icontent_self-managed_rot>
+BalancerMember http://10.118.76.32/icontent/self-managed_rot/ disablereuse=on keepalive=off retry=10
+BalancerMember http://10.118.76.33/icontent/self-managed_rot/ disablereuse=on keepalive=off retry=10
+</Proxy>
+
+#non rot specific content goes to ashburn icontent server
+<Proxy balancer://icontent>
+        BalancerMember https://icontent.plateau.com/icontent/ disablereuse=on keepalive=off retry=10
+
+</Proxy>
+
+<Proxy balancer://icontent_e>
+        BalancerMember https://icontent.plateau.com/icontent_e/ disablereuse=on keepalive=off retry=10
+</Proxy>
+
+<Proxy balancer://session>
+        BalancerMember https://icontent.plateau.com/session/ disablereuse=on keepalive=off retry=10
+</Proxy>
+
+ProxyPreserveHost Off
+ProxyPass /icontent/CUSTOM_rot/ balancer://icontent_CUSTOM_rot/
+ProxyPass /icontent_e/CUSTOM_rot/ balancer://icontent_e_CUSTOM_rot/
+ProxyPass /icontent/self-managed_rot/ balancer://icontent_self-managed_rot/
+
+SSLProxyVerify none
+ProxyRemote https://icontent.plateau.com/ https://localhost:8443
+
+ProxyPass /icontent/ balancer://icontent/
+ProxyPass /icontent_e/ balancer://icontent_e/
+
+ProxyPass /session/ balancer://session/
+
+</VirtualHost>

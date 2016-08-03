@@ -1,0 +1,43 @@
+#!/bin/bash
+
+NFS_DIR=/nfs/shared/SaaSOperations/OneTime-Config-Setup
+base_dir=${NFS_DIR}/Automation-Utils
+conf_dir=${NFS_DIR}/Automation-Config
+
+pool_id=$1
+dc=$2
+zone=$3
+
+#customer=""
+file=""
+node=""
+servers=`cat $conf_dir/$dc-$zone/pool.properties | grep "^pool.\[${pool_id}\].app.nodes" | cut -f 2 -d "="`
+#customers=`cat $conf_dir/$dc-$zone/pool.properties | grep "^pool.\[${pool_id}\].customers" | cut -f 2 -d "="`
+
+#echo Customers available in the $pool_id are =$customers
+echo Servers available in the $pool_id are = $servers
+#IFS=',' read -a carray <<< "$customers"
+IFS=',' read -a sarray <<< "$servers"
+
+echo "------------------------------"
+#printf "\n|%2s\t|%2s\t|%2s\t|%2s|\n" "Customer" "Extension" "Node" "File Exists"
+printf "\n|%2s\t|%2s|\n" "Node" "File Exists"
+echo "------------------------------"
+#for customer in "${carray[@]}"
+#do
+#    extensions=`cat $conf_dir/$dc-$zone/customers/$customer.properties | grep ".ext." | grep -v "#" | awk -F '[' '{print $3}' | cut -f 1 -
+#d "]"`
+#    for extension in $extensions
+#    do
+        for node in "${sarray[@]}"
+        do
+            #ssh -q -T -o "StrictHostKeyChecking no" $node 'bash -s' < check.sh
+			 ssh -q -T -o "StrictHostKeyChecking no" $node 'bash -s'
+			 file=ls -l /local/opt/ |grep sapjvm | awk ' {print $NF}'
+            #printf "\n|%5s\t|%5s\t|%5s\t|%5s|" "$customer" "$extension" "$node" "$file"
+			printf "\n|%2s\t|%2s|" "$node" "$file"
+        done
+    #done
+#done
+printf "\n"
+echo "------------------------------"

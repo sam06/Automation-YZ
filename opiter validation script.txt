@@ -1,0 +1,58 @@
+#!/bin/bash
+NFS_DIR=/nfs/shared/SaaSOperations/OneTime-Config-Setup
+base_dir=${NFS_DIR}/Automation-Utils
+conf_dir=${NFS_DIR}/Automation-Config
+D=`date +%Y-%m-%d-%H-%M`
+poolid=$1
+dc=$2
+zone=$3
+if [ $1 == all ]; then
+                servers=`cat $conf_dir/$dc-$zone/pool.properties | grep  .app.nodes | grep -v "#" | cut -f 2 -d "=" | sed  's/ /,/g'`
+                lists=`echo $servers | sed  's/ /,/g'`
+                IFS=',' read -a array <<< "$lists"
+                echo " "
+                echo " "
+                echo "******************************************START OF JAVA/Optier verification***************************"
+                for node in "${array[@]}"
+                do
+                                echo "Processing $node"
+                                ssh -q -T -o "StrictHostKeyChecking no" $node <<EOF
+                                 java=`ps -ef |grep java`
+								echo "$java"
+EOF
+                                echo "--------------------------------------------------------------------------------------"
+                done
+                echo "******************************************END*****************************************"
+                echo " "
+                echo " "
+else
+                servers=`cat $conf_dir/$dc-$zone/pool.properties | grep "^pool.\[${poolid}\].app.nodes" | cut -f 2 -d "="`
+                echo Servers available in the $poolid are = $servers
+                IFS=',' read -a array <<< "$servers"
+                echo " "
+                echo " "
+                echo "******************************************START OF JAVA/Optier verification***************************"
+                for node in "${array[@]}"
+                do
+                                echo "Processing $node"
+                                ssh -q -T -o "StrictHostKeyChecking no" $node > text <<EOF
+								#echo "--------------------------------------------------------------------------------------"
+								 hostname -f
+                                #ps -ef |grep java
+                                 sudo su -
+								optier=`ps -ef |grep optier |grep contextagent |wc -l`
+						if [ $optier == 2 ]; then
+						                     echo "Optier is installed & service is running"
+								
+						                     else
+								            zypper --non-interactive install optier-lms-b1511.0.0 > /dev/null
+								            service optier start > /dev/null
+								            ps -ef |grep optier
+						fi
+EOF
+                                echo "--------------------------------------------------------------------------------------"
+                done
+                echo "******************************************END******************************************"
+                echo " "
+                echo " "
+fi

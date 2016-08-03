@@ -1,0 +1,65 @@
+New Vm List DC12 prod pool 01
+=============================
+Servers built on bsa3806_hv
+vsa396618  Used for PC12LP02U01  
+vsa396632  Used for PC12LP02U02
+vsa396633  Used for PC12LP02U03
+vsa396636  Used for PC12LP02U04
+vsa396637  Used for PC12LP02U05
+vsa396638  Used for PC12LP02U06
+vsa396647  Used for PC12LP02B01
+Servers built on bsa4107_hv 
+vsa396708  Used for PC12LP02B02  
+vsa396711  Used for PC12LP02C01  
+vsa396713  Used for PC12LP02C02  
+vsa396715  Used for PC12LP02R01  
+vsa396716  Used for PC12LP02R02
+
+=============================
+Course Content: 
+This course will help the associates to understand about : 
+•	The Agile Approach, Models and Methodologies 
+•	Initiating and Scoping an Agile Project 
+•	Creating Estimates for the Release Plan 
+•	Agile Tools for Prioritizing Requirements 
+•	Processes Supporting Value Driven Delivery and Product Quality 
+•	Keeping Stakeholders in Agile Projects and Tools for Stakeholder Engagement 
+•	Overview of Agile Programming 
+•	Implementing TDD and BDD in an Agile Project 
+•	Agile Testing Strategies
+
+============================
+Filesystem                                                        Size  Used  Avail  Use%   Mounted on     DC
+  
+ashnfs001.plateau.priv:/nfs/shared                                481G  358G   99G     79%   /nfs/shared   Ashburn Juniper:
+
+nfs001.ash.sf.priv:/export/shared                                 556G  552G     0     100%  /nfs/shared   Ashburn Cisco:
+
+dc2sfnetapp01a.ams2.sf.priv:/vol/netapp_shared/netapp_shared_q    500G  431G   70G     87%   /nfs/shared    Amsterdam:
+
+10.10.2.13:/vol1_shared_01                                        500G  163G   338G     33%   /nfs/shared   sydney:
+
+dc15mgtnfs01.sha.sf.priv:/export/shared                           197G  150G   38G      80%   /nfs/shared   Dc15
+          
+nfs001.phx.sf.priv:/export/shared                                 63G   59G    1.5G     98%   /nfs/shared   Dc4:
+
+==============/nfs/saasops/===========
+
+Filesystem                                                         Size  Used  Avail  Use%   Mounted on                  DC
+  
+10.2.2.34:/vol1_customer_ext_01                                     50G  643M   50G   2%   /nfs/saasops/lms_extensions   DC2
+
+10.4.2.21:/vol/vol1_customer_ext_01                                50G  7.7G   43G      16% /nfs/saasops/lms_extensions  Dc4
+  
+10.24.244.252:/vol/vol1_customer_ext_01                            200G  976M  200G   1%   /nfs/saasops/lms_extensions   Juniper                            
+
+10.8.2.12:/vol/vol1_COM_customer_ext_01                            100G  3.1G   97G   4%   /nfs/saasops/lms_extensions   Cisco                              
+
+10.10.2.14:/vol1_customer_ext_01                                    50G   84M   50G   1%   /nfs/saasops/lms_extensions   DC10
+
+vnsa2952s1:/vol/vol_lms_stage_pm/saasops                            20G   16G  4.4G  79%   /nfs/saasops                  DC12
+
+
+
+
+     

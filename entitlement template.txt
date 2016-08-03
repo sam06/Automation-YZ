@@ -1,0 +1,56 @@
+<VirtualHost <%= ipaddress %>:80>
+        ServerName 64.95.110.34
+        ServerAdmin hosting@plateau.com
+        DocumentRoot "/srv/www/htdocs/icontent"
+        ErrorLog "|/usr/sbin/cronolog /var/log/httpd/ic-entitlement-error-%Y%m%d%H_log"
+        LogLevel warn
+        CustomLog "|/usr/sbin/cronolog /var/log/httpd/ic-entitlement-access-%Y%m%d%H_log" combined
+        keepalive Off
+        SetEnv force-proxy-request-1.0 1
+        SetEnv proxy-nokeepalive 1
+
+
+        ProxyPass /session/ http://10.4.10.247:8080/session/ disablereuse=on retry=0
+
+#OLD CONFIGURATION DETAILS
+# These are for OFBIZ
+#ProxyPass /start/ http://ashicofb001.plateau.priv:8080/
+#ProxyPassReverse /start/ http://ashicofb001.plateau.priv:8080/
+#ProxyPass /css/ http://ashicofb001.plateau.priv:8080/css/
+#ProxyPassReverse /css/ http://ashicofb001.plateau.priv:8080/css/
+#ProxyPass /shop/ http://ashicofb001.plateau.priv:8080/shop/
+#ProxyPassReverse /shop/ http://ashicofb001.plateau.priv:8080/shop/
+#ProxyPass /Images/ http://ashicofb001.plateau.priv:8080/Images/
+#ProxyPassReverse /Images/ http://ashicofb001.plateau.priv:8080/Images/
+#ProxyPass /images/ http://ashicofb001.plateau.priv:8080/images/
+#ProxyPassReverse /images/ http://ashicofb001.plateau.priv:8080/images/
+#ProxyPass /Login/ http://ashicofb001.plateau.priv:8080/Login/
+#ProxyPassReverse /Login/ http://ashicofb001.plateau.priv:8080/Login/
+#ProxyPass /js/ http://ashicofb001.plateau.priv:8080/js/
+#ProxyPassReverse /js/ http://ashicofb001.plateau.priv:8080/js/
+#ProxyPass /jscripts/ http://ashicofb001.plateau.priv:8080/jscripts/
+#ProxyPassReverse /jscripts/ http://ashicofb001.plateau.priv:8080/jscripts/
+#ProxyPass /clear-search http://ashicofb001.plateau.priv:8080/clear-search
+#ProxyPassReverse /clear-search http://ashicofb001.plateau.priv:8080/clear-search
+
+
+
+<Proxy balancer://iclp>
+BalancerMember http://pd4entitle01.phx.sf.priv:8080
+BalancerMember http://pd4entitle02.phx.sf.priv:8080
+
+</Proxy>
+ProxyPass /iclp balancer://iclp/iclp
+
+# Proxlet for Yahoo
+ProxyPass /proxlet balancer://iclp/proxlet
+
+
+
+
+
+
+
+</VirtualHost>
+
+ 

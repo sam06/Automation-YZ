@@ -1,0 +1,169 @@
+
+Git repos
+
+https://c5173961@git.sf.priv:8443/git/r/LMS-Automation/Automation-Configs.git
+
+https://c5173961@git.sf.priv:8443/git/r/LMS-Automation/Automation-Configs-YZ.git
+
+/app/home/lmsdpl/oracle/logs/PC18LP99_PROD_BOOT-create-b1508.15.0-20151202_153031
+
+grant EXECUTE ON dbms_aqadm TO PC18LP99_PROD_BOOT with grant option
+                 *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+grant EXECUTE ON dbms_aq TO PC18LP99_PROD_BOOT with grant option
+                 *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+grant EXECUTE ON dbms_aqin TO PC18LP99_PROD_BOOT with grant option
+                 *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+PC18LP99_PROD_BOOT/dhhje4d@DC18PLM1
+PC18LP99_TEST_TMS/Vlab1234@DC18PLM1
+
+dc18orapc1n1.dc18.saas.sap.corp
+
+PC18LP01_PROD_BOOT/gIBMosEb8Vj
+
+App VIp ..for pool 99 ip-10-240-22-85.dc18.saas.sap.corp
+
+10.240.13.83:/vol1_automation /automation nfs ro,rsize=32768,wsize=32768,intr,_netdev 0 0
+
+mo-112de1072.dc18.saas.sap.corp
+
+Updating pc18lp99u01 (mo-dbb3e3870.dc18.saas.sap.corp)
+Updating pc18lp99u02 (mo-e525102e7.dc18.saas.sap.corp)
+Updating pc18lp99u03 (mo-b1d0900ab.dc18.saas.sap.corp)
+Updating pc18lp99b01 (mo-03ffdbabc.dc18.saas.sap.corp)
+Updating pc18lp99c01 (mo-c0870e695.dc18.saas.sap.corp)
+Updating pc18lp99r01 (mo-e7538dcea.dc18.saas.sap.corp)
+
+=====
+2015-12-03T11:22:25,991 [INFO ] {} [#bootstrap] localhost-startStop-1 - TMSBootstrapInitializer - bootstrap TMS -- COMPLETE, took 1570ms
+2015-12-03T11:22:26,001 [INFO ] {} [] localhost-startStop-1 - HttpSessionWeightWatcher - Sessions weight watcher is disabled
+2015-12-03T11:22:26,002 [INFO ] {} [] TenantChangeMonitor - TenantChangeMonitor - Tenant added [pc18lp99-monitoring], should initialize: false
+2015-12-03T11:22:26,002 [INFO ] {} [] TenantChangeMonitor - TenantChangeMonitor - Tenant added [pc18lp99-test], should initialize: false
+
+
+=======
+alter user saasoperations identified by Kwollk76dgd ;
+grant exp_full_database , imp_full_database , select any dictionary to saasoperations;
+grant unlimited tablespace to saasoperations with admin option;
+grant CONNECT, RESOURCE to saasoperations with admin option ;
+grant CTXAPP to saasoperations with admin option;
+grant CREATE TABLE to saasoperations with admin option;
+grant CREATE MATERIALIZED VIEW to saasoperations with admin option;
+grant CREATE ANY TYPE to saasoperations with admin option;
+grant CREATE ANY CONTEXT to saasoperations with admin option;
+grant CREATE SYNONYM to saasoperations with admin option;
+grant CREATE VIEW to saasoperations with admin option;
+grant aq_administrator_role TO saasoperations with admin option;
+grant aq_user_role TO saasoperations with admin option;
+grant execute ON dbms_aqadm TO saasoperations with grant option;
+grant execute ON dbms_aq TO saasoperations with grant option;
+grant execute ON dbms_aqin TO saasoperations with grant option;
+grant execute ON CTX_CLS TO saasoperations with grant option;
+grant execute ON CTX_DDL TO saasoperations with grant option;
+grant execute ON CTX_DOC TO saasoperations with grant option;
+grant execute ON CTX_OUTPUT TO saasoperations with grant option;
+grant execute ON CTX_QUERY TO saasoperations with grant option;
+grant execute ON CTX_REPORT TO saasoperations with grant option;
+grant execute ON CTX_THES TO saasoperations with grant option;
+grant execute on DBMS_LOCK TO saasoperations with GRANT option;
+grant execute on dbms_session TO saasoperations with GRANT option;
+grant execute on dbms_sql TO saasoperations with GRANT option;
+grant execute on dbms_lob TO saasoperations with GRANT option;
+grant execute on DBMS_XMLDOM TO saasoperations with GRANT option;
+grant execute on DBMS_OBFUSCATION_TOOLKIT TO saasoperations with GRANT option;
+grant execute on DBMS_UTILITY TO saasoperations with GRANT option;
+commit;
+
+=========
+
+c5173961@mo-ba723a1cc:~> nslookup yum.dc17.saas.sap.corp
+Server:         10.170.136.23
+Address:        10.170.136.23#53
+
+Non-authoritative answer:
+yum.dc17.saas.sap.corp  canonical name = ip-10-170-154-192.dc17.saas.sap.corp.
+Name:   ip-10-170-154-192.dc17.saas.sap.corp
+Address: 10.170.154.192
+
+c5173961@mo-ba723a1cc:~>
+10.170.154.192  mo-23d206ceb.dc17.saas.sap.corp  mo-23d206ceb
+
+10.170.154.254  mo-23d206ceb.dc17.saas.sap.corp  mo-23d206ceb
+
+
+SC17LP02_STAGE_BOOT/gIBMosEb8Vj@DC17SLM3
+
+
+
+mo-cdaf5aedb.dc17.saas.sap.corp
+
+mo-c03156c8f.dc17.saas.sap.corp
+
+mo-8a2d04197.dc17.saas.sap.corp -  dc17 stage pool 02 deployer node 
+
+
+http://moo-repo.wdf.sap.corp:8080/rubygemsorg/ 
+
+mo-8a2d04197:/app/home/oracle # nslookup moo-repo.wdf.sap.corp
+Server:         10.170.136.23
+Address:        10.170.136.23#53
+
+Non-authoritative answer:
+Name:   moo-repo.wdf.sap.corp
+Address: 10.170.136.32
+
+http://moo-repo.wdf.sap.corp:8080/rubygemsorg/specs.4.8.gz
+
+
+[‎16-‎02-‎2016 21:08] Sharma, Rahul: 
+knife node delete mo-36de73c82.dc17.saas.sap.corp -y -c /nfs/shared/SaaSOperations/OneTime-Config-Setup/Automation-Utils/config/chef/dc17-knife.rb
+knife client delete mo-36de73c82.dc17.saas.sap.corp -y -c /nfs/shared/SaaSOperations/OneTime-Config-Setup/Automation-Utils/config/chef/dc17-knife.rb 
+
+
+create a pool for peakseason provisioning in DC17 Prod
+
+Monsoon SaaS QA Application 
+Office LAN (Zone 2)
+
+http://10.116.37.27:8080/job/Create_App_Pool/  - DC13 jenkins URL
+
+https://c5173961@10.171.198.52:8443/git/r/Chef_Automation/hcm-chef-automation-configs.git
+
+https://c5180910@git.sf.priv:8443/git/r/LMS-Automation/Automation-Configs-YZ.git
+
+git clone git@github.wdf.sap.corp:sapsolutions/sap-catalogue.git
+
+SSL Cert for *.scdemo.successfactors.eu
+
+extension location QC dc13
+
+http://yum.lab-rot.saas.sap.corp/hcm/lms/files/extensions/qc/CommonExtensions/
+
+
+ls -l |grep sapjvm |cut -f 15 -d " "
+
+To print the last field of a output >>
+
+ls -l /local/opt/ |grep sapjvm | awk ' {print $NF}'
+
+ 
+To print the out of ll cmd ignoring the string total >>
+
+ls -l /local/opt/ |grep -v "total" | awk ' {print $NF}' 
+
+
+ssh -q -T -o "StrictHostKeyChecking no" pc8lp100u01
+
+ -         "automation" : {
+ -              "source" : "10.240.50.164:/automation",
+ -              "options" : "rsize=32768,wsize=32768,intr,_netdev",
+ -              "mountPoint" : "/automation"
+ -         },

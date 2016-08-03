@@ -1,0 +1,50 @@
+#!/bin/bash
+NFS_DIR=/nfs/shared/SaaSOperations/OneTime-Config-Setup
+base_dir=${NFS_DIR}/Automation-Utils
+conf_dir=${NFS_DIR}/Automation-Config
+D=`date +%Y-%m-%d-%H-%M`
+poolid=$1
+dc=$2
+zone=$3
+if [ $1 == all ]; then
+	servers=`cat $conf_dir/$dc-$zone/pool.properties | grep  .app.nodes | grep -v "#" | cut -f 2 -d "=" | sed  's/ /,/g'`
+	lists=`echo $servers | sed  's/ /,/g'`
+	IFS=',' read -a array <<< "$lists"
+	echo " "
+	echo " "
+	echo "******************************************START OF Service Pack verification***************************"
+	for node in "${array[@]}"
+	do
+		#echo "Processing $node"
+		ssh -q -T -o "StrictHostKeyChecking no" $node << EOF
+		java=`rpm -qa|grep java`
+	
+			fi
+EOF
+
+		echo "--------------------------------------------------------------------------------------"
+	done
+	echo "******************************************END*****************************************"
+	echo " "
+	echo " "
+else
+	echo "Checking else pool"
+	servers=`cat $conf_dir/$dc-$zone/pool.properties | grep "^pool.\[${poolid}\].app.nodes" | cut -f 2 -d "="`
+	echo Servers available in the $poolid are = $servers
+	IFS=',' read -a array <<< "$servers"
+	echo " "
+	echo " "
+	echo "******************************************START OF Splunk verification***************************"
+	for node in "${array[@]}"
+	do
+		echo "Processing $node"
+		ssh -q -T -o "StrictHostKeyChecking no" $node  <<EOF
+			echo "Logged in"
+			java=`rpm -qa|grep java`
+	
+			echo "--------------------------------------------------------------------------------------"
+	done
+	echo "******************************************END******************************************"
+	echo " "
+	echo " "
+fi

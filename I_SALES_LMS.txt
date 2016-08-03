@@ -1,0 +1,49 @@
+when HTTP_REQUEST {
+	if {[string match {a[0][0-2][0-9][0-9]*} [HTTP::host]] } then {
+	        pool P_SALES_PS8LP01_ASH_SF_PRIV-8080
+       } elseif {[string match {training0021*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP13_ASH_SF_PRIV-8080
+       } elseif {[string match {training0022*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP13_ASH_SF_PRIV-8080
+       } elseif {[string match {training0023*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP13_ASH_SF_PRIV-8080
+       } elseif {[string match {train121*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP13_ASH_SF_PRIV-8080
+       } elseif {[string match {train122*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP13_ASH_SF_PRIV-8080
+       } elseif {[string match {train123*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP13_ASH_SF_PRIV-8080
+       } elseif {[string match {train124*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP13_ASH_SF_PRIV-8080
+       } elseif {[string match {train125*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP13_ASH_SF_PRIV-8080
+        } elseif {[string match {acein*} [HTTP::host]] } then {
+                pool P_SALES_PS8LP02_ASH_SF_PRIV-8080
+        } elseif {[string match {b[0][0][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP03_ASH_SF_PRIV-8080
+        } elseif {[string match {b[0][1][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP04_ASH_SF_PRIV-8080
+        } elseif {[string match {train*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP05_ASH_SF_PRIV-8080
+        } elseif {[string match {d[0][0-2][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP06_ASH_SF_PRIV-8080
+        } elseif {[string match {b[0][2][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP06_ASH_SF_PRIV-8080
+        } elseif {[string match {partner[0][0][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP07_ASH_SF_PRIV-8080
+        } elseif {[string match {partner[0][3][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP07_ASH_SF_PRIV-8080
+        } elseif {[string match {partner[0][2][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP07_ASH_SF_PRIV-8080
+        } elseif {[string match {partner[0][1][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP08_ASH_SF_PRIV-8080
+        } elseif {[string match {e[0][0-1][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP14_ASH_SF_PRIV-8080
+        } elseif {[string match {e[0][2-4][0-9][0-9]*} [HTTP::host]] } then {
+		pool P_SALES_PS8LP10_ASH_SF_PRIV-8080
+        } elseif {[string match {angdp[2][0][0-1][0-9][1-9]*} [HTTP::host]] } then {
+                  pool P_SALES_PS8LP09_ASH_SF_PRIV-8080
+        } else { 
+	         pool P_SALES_PS8LP09_ASH_SF_PRIV-8080
+        } 
+}

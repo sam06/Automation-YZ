@@ -1,0 +1,123 @@
+To further give you all an idea of what I did, based on the Confluence New Pool Creation documentation I ran the below commands on dpl001.ash.sf.priv:
+
+To check for Available External VIP IPs:
+SUBNET=10.8.248; for i in {21..254}; do if ! ping -c 1 -W 1 $SUBNET.$i | grep -q from; then echo "$SUBNET.$i Available"; fi; done
+
+Template syntax as provided by Jay to add IP entries:
+/usr/sbin/addns -U -n POOLNAME -d DOMAIN -i IP -m
+
+Actual commands run to add the necessary VIP IPs:
+/usr/sbin/addns -U -n sc8lp16 -d ash.sf.priv -i 10.8.248.217 -m
+/usr/sbin/addns -U -n sc8lp17 -d ash.sf.priv -i 10.8.248.212 -m
+/usr/sbin/addns -U -n sc8lp18 -d ash.sf.priv -i 10.8.248.213 -m
+/usr/sbin/addns -U -n sc8lp19 -d ash.sf.priv -i 10.8.248.214 -m
+/usr/sbin/addns -U -n sc8lp20 -d ash.sf.priv -i 10.8.248.215 -m
+/usr/sbin/addns -U -n sc8lqap01 -d ash.sf.priv -i 10.8.248.216 –m
+
+Remember that the External VIP IP can be looked up and assigned without actually doing any work in the F5.  It can be done without access to the F5 entirely.
+
+http://www.ntu.edu.sg/home/ehchua/programming/howto/Tomcat_HowTo.html <http://www.ntu.edu.sg/home/ehchua/programming/howto/Tomcat_HowTo.html> 
+
+/nfs/repo/plateau/5.5
+
+Jobs For Day To Day Activity
+RunAutomation-New
+
+qa/qa12345
+sftp qa@sftp16-int.mgd.sf.priv
+
+ mutt -s "dc8_integration" santosh.yadav@sap.com < /tmp/message.txt -a /nfs/shared/automationlogs/adhocSQL/results/dc8.tar
+  tar -cvf dc2.tar *.csv
+
+
+https://updates.jenkins-ci.org/download/plugins/scripttrigger/
+
+puppet agent --onetime --no-daemonize -v --server pc16mgtca01.mgd.sf.priv
+puppet agent -t --configtimeout 600
+puppet agent -t --server pc16mgtppt01.mgd.sf.priv
+
+ProxyPass /learning/ http://10.110.12.16:8080/learning/  disablereuse=on retry=
+
+/local/jenkins/workspace/OneTime-Config-Setup/scripts
+
+/nfs/shared/SaaSOperations/OneTime-Config-Setup/Automation-Config
+
+gem install jenkins_api_client -v 0.14.1
+
+uuencode QM8AQP01T04RC3S5_impdp_020315.log QM8AQP01T04RC3S5_impdp_020315.log | mailx -s "QM8AQP01T04RC3S5_impdp_020315.log" geetha.m01@sap.com
+uuencode facter.zip | mailx -s "facter.zip" rakesh.arunkumar@sap.com
+
+mutt -s "Facter File" santosh.yadav@sap.com < /tmp/message.txt -a /var/lib/puppet/lib/facter.zip
+
+echo "Facter File" | mutt -a "facter.zip" santosh.iec@gmail.com
+
+=============
+VM Creation
+-------------
+Hi Team ,
+
+Here is the detail :-
+
+Data center name where the VMs/Servers are to be build.
+⦁	Is it a Virtual Machine (VM) or a Physical server.-> Virtual machine
+⦁	Mention Server names -> pc16extr01.mgd.sf.priv
+⦁	Configuration required for VMs/Phy. Servers.
+
+------------No. of CPU cores. -> 4
+------------Amount of RAM. -> 8
+------------Amount of Storage (OS, NFS, SAN etc.).-> 50 GB
+------------Network (if specific network required). -> 10.16.213
+⦁	Are the VMs/Servers for temporary purpose. -> Permanent VM
+⦁	If the VMs are to be commissioned for temporary use, then mention by when/what date they would be decommissioned.
+⦁	Any other details which may help in removing any ambiguity -> Take reference of this server dc16jenkins01
+
+================DCs Naming Convention
+  DC2 -> Amsterdam2/HCM
+  DC4 -> Chandler1/HCM
+  DC8 -> Ashburn1/HCM
+  DC10 -> Sydney1/HCM
+  DC12 -> Rot1/HCM
+  DC15 -> Shanghai1/HCM
+  DC16 -> Magdeburg1/HCM
+  DC17 -> Toronto1/HCM
+  DC18 -> Moscow1/HCM
+
+https://monsoon.mo.sap.corp
+
+Username : HOSTING
+Password   :  A26RvC!UQ@z
+
+Provisioning Login detail :-
+=============================
+C5206195
+Pa$$w0rd
+
+https://confluence.successfactors.com/pages/viewpageattachments.action?pageId=125053405&highlight=puppet.docx#Puppet-attachment-puppet.docx
+
+https://confluence.successfactors.com/pages/viewpage.action?pageId=125052103
+
+http://confluence.successfactors.com/display/RE/iContent+set+up+in+DC15 - icontent Setup 
+
+https://confluence.successfactors.com/display/RMDA/LMS+DC18+prod - QA verfication & certification
+
+Automation Configs Stage
+https://git.sf.priv:8443/git/r/LMS-Automation/Automation-Configs-YZ.git
+
+Automation Configs Prod
+https://git.sf.priv:8443/git/r/LMS-Automation/Automation-Configs.git
+
+0ld2HcbR4
+
+
+sftp://cubetree:VC%3FJFS89@sftp012.successfactors.eu/export/UserDirectory_.csv
+
+Hello Team,
+
+We don’t see b1511.0.0 and b1508.15.0 rpm files under below path:
+
+http://moo-repo.wdf.sap.corp:8080/static/monsoon/saas/lms/yum/releases/SLES/11.3/lms/
+
+/etc/puppet/modules/automation/manifeast/
+#include nfs::client::lms_heapdump in tms.pp on puppet master.
+
+

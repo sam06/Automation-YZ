@@ -1,0 +1,26 @@
+Reserved Words:
+The following list shows the reserved words in Ruby. These reserved words may not be used as constant or variable names. They can, however, be used as method names.
+
+BEGIN	do	next	then
+END	else	nil	true
+alias	elsif	not	undef
+and	end	or	unless
+begin	ensure	redo	until
+break	false	rescue	when
+case	for	retry	while
+class	if	return	while
+def	in	self	__FILE__
+defined?	module	super	__LINE__
+
+class Sample
+   def hello
+      puts "Hello Ruby!"
+   end
+   def sam
+       puts "santosh Yadav"
+end
+
+# Now using above class to create objects
+object = Sample. new
+object.hello
+object.sam
